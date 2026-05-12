@@ -31,3 +31,36 @@ documents:
     language: pt-BR
     local_path: rag/documents/raw/seed_protocolos_atencao_basica.md
     notes: Semente local baseada no registro de fonte oficial; nao substitui documento oficial completo.
+
+  - id: official_linhas_cuidado_overview
+    source_id: ministerio_saude_linhas_cuidado
+    title: Linhas de Cuidado - Ministerio da Saude
+    source_url: https://linhasdecuidado.saude.gov.br
+    publisher: Ministerio da Saude
+    retrieved_at: "2026-05-12"
+    license: official_public_web_extract
+    language: pt-BR
+    local_path: rag/documents/raw/official_linhas_cuidado_overview.md
+    notes: Extrato curado da pagina oficial de Linhas de Cuidado; nao substitui documento oficial completo.
+
+  - id: official_bvsms_overview
+    source_id: bvs_ms
+    title: Biblioteca Virtual em Saude do Ministerio da Saude - BVS MS
+    source_url: https://bvsms.saude.gov.br
+    publisher: Ministerio da Saude
+    retrieved_at: "2026-05-12"
+    license: official_public_web_extract
+    language: pt-BR
+    local_path: rag/documents/raw/official_bvsms_overview.md
+    notes: Extrato curado da pagina oficial da BVS MS para descoberta de documentos; nao e protocolo clinico especifico.
+
+  - id: official_pcdt_overview
+    source_id: ministerio_saude_pcdt
+    title: Protocolos Clinicos e Diretrizes Terapeuticas - Ministerio da Saude
+    source_url: https://www.gov.br/saude/pt-br/assuntos/pcdt
+    publisher: Ministerio da Saude
+    retrieved_at: "2026-05-12"
+    license: official_public_web_extract
+    language: pt-BR
+    local_path: rag/documents/raw/official_pcdt_overview.md
+    notes: Extrato curado da pagina oficial de PCDT; descreve tipos de documentos e nao substitui PCDT especifico.

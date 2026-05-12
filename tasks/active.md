@@ -2,20 +2,18 @@
 
 ## Current Task
 
-Plan official RAG document ingestion and public dataset acquisition for the next MVP phase.
+Add first curated official SUS extracts for local RAG.
 
 ## Checklist
 
-- [x] Define RAG document acquisition policy and commit/storage rules.
-- [x] Select first official SUS documents for manual curation.
-- [x] Define dataset acquisition policy for public fine-tuning candidates.
-- [x] Add validation for official document manifest metadata before ingestion expansion.
-- [~] Run validation and open PR.
+- [x] Add curated Linhas de Cuidado overview extract.
+- [x] Add curated BVS MS overview extract.
+- [x] Add curated PCDT overview extract.
+- [x] Register extracts in `rag/documents/manifest.yml`.
+- [ ] Run validation and open PR.
 
 ## Notes
 
-- Prioritize official RAG documents before fine-tuning datasets.
-- Keep PDFs or large raw files out of Git unless explicitly justified.
-- Commit small curated Markdown/text extracts with source URLs and retrieval dates when they improve reproducible demo behavior.
-- Keep downloaded datasets local/ignored until license, privacy, and schema checks pass.
-- Next implementation PR should add the first curated official SUS extracts, not raw bulk downloads.
+- These are overview extracts from official public pages, not complete protocols.
+- Do not infer protocol-specific conduct from these overview extracts alone.
+- Next RAG content PR should add condition/pathway-specific official documents or extracts.
