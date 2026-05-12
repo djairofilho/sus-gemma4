@@ -17,6 +17,21 @@ The initial product should avoid persistent patient data storage. Store only dev
 - `license`: usage notes when known.
 - `local_path`: local file reference.
 
+### SourceRegistryEntry
+
+- `id`: stable source identifier.
+- `name`: source display name.
+- `category`: source category for official RAG sources.
+- `publisher`: publishing organization for official sources.
+- `base_url`: HTTPS source root.
+- `scope`: federal, state, municipal, regional, or restricted scope.
+- `use`: rag, structured_context, terminology_normalization, benchmark, or SFT use.
+- `access`: public, public_or_research, or restricted.
+- `citation_required`: true for official RAG sources.
+- `contains_patient_data`: true only for restricted future datasets with credentialing.
+- `requires_credentialing`: true for restricted or patient-data sources.
+- `notes`: operational and safety notes in Brazilian Portuguese or English.
+
 ### Chunk
 
 - `id`: stable chunk identifier.

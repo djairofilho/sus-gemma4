@@ -8,11 +8,11 @@ Add local RAG document foundation and source registries.
 
 - [x] Read relevant specs and RAG skill.
 - [x] Create working branch `feat/rag-local-documents`.
-- [ ] Document data source policy.
-- [ ] Add official and fine-tuning source registries.
-- [ ] Add local RAG document layout.
-- [ ] Add source metadata validator and tests.
-- [ ] Integrate validation and update specs/tasks.
+- [x] Document data source policy.
+- [x] Add official and fine-tuning source registries.
+- [x] Add local RAG document layout.
+- [x] Add source metadata validator and tests.
+- [x] Integrate validation and update specs/tasks.
 - [ ] Open PR and wait for CI.
 
 ## Notes

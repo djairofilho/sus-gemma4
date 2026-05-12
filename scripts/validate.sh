@@ -130,6 +130,29 @@ run_safety_evals_if_exists() {
   "$python_bin" evals/scripts/run_safety_evals.py
 }
 
+run_rag_validation_if_exists() {
+  if [ ! -f "rag/scripts/validate_sources.py" ]; then
+    log "skip rag validation: source validator not found"
+    return 0
+  fi
+
+  if ! python_bin="$(python_command)"; then
+    log "skip rag validation: python not found"
+    return 0
+  fi
+
+  if ! "$python_bin" -m pytest --version >/dev/null 2>&1; then
+    log "skip rag validation: pytest not installed for $python_bin"
+    return 0
+  fi
+
+  log "run rag tests"
+  "$python_bin" -m pytest rag/tests
+
+  log "run rag source validation"
+  "$python_bin" rag/scripts/validate_sources.py
+}
+
 run_if_executable_exists() {
   file_path="$1"
   label="$2"
@@ -154,6 +177,7 @@ run_if_package_script_exists "app/frontend" test
 run_if_package_script_exists "app/frontend" build
 run_python_backend_if_exists
 run_safety_evals_if_exists
+run_rag_validation_if_exists
 run_if_executable_exists "./scripts/validate-extra.sh" "extra validation"
 
 log "validate: complete"

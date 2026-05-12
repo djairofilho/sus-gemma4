@@ -12,6 +12,7 @@
 - [x] Add Ollama integration.
 - [x] Add structured output schema validation.
 - [x] Add safety eval cases.
+- [x] Add local RAG source registries.
 - [ ] Add RAG ingestion and retrieval.
 - [ ] Add fine-tuning dataset seed examples.
 
