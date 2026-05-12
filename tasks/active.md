@@ -6,8 +6,8 @@ No active task.
 
 ## Checklist
 
-- [x] Ollama integration completed in PR #3.
+- [x] Structured output retry completed in PR #4.
 
 ## Notes
 
-- Next recommended task: add stricter structured output repair/retry and schema regression tests.
+- Next recommended task: add SUS safety eval cases.

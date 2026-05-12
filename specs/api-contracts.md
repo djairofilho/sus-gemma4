@@ -49,4 +49,4 @@ This file defines stable contracts for internal APIs and structured model output
 }
 ```
 
-The endpoint returns a schema-valid response from live Ollama only when `GEMMA_SUS_USE_OLLAMA=true`. Otherwise it uses the local mock runtime. Invalid or unavailable Ollama responses fall back to a conservative mock response with `runtime` set to `mock_fallback`.
+The endpoint returns a schema-valid response from live Ollama only when `GEMMA_SUS_USE_OLLAMA=true`. Otherwise it uses the local mock runtime. Model output may be plain JSON, fenced JSON, or JSON surrounded by extra text. Invalid schema output triggers one correction retry. Invalid, unavailable, or unrecoverable Ollama responses fall back to a conservative mock response with `runtime` set to `mock_fallback`.

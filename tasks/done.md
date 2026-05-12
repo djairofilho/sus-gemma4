@@ -30,3 +30,11 @@
 - Added conservative mock fallback for unavailable, invalid, or non-JSON model output.
 - Added frontend runtime state rendering.
 - Opened PR: https://github.com/djairofilho/sus-gemma4/pull/3
+
+## Structured Output Retry
+
+- Added structured output parser for plain JSON, fenced JSON, and JSON embedded in extra text.
+- Added schema regression tests for invalid JSON and invalid enum values.
+- Added one correction retry before conservative fallback.
+- Documented retry behavior in specs.
+- Opened PR: https://github.com/djairofilho/sus-gemma4/pull/4

@@ -41,7 +41,10 @@ def test_triage_rejects_empty_case_text() -> None:
 
 
 class FakeRuntime:
+    calls = 0
+
     async def generate(self, prompt: str) -> str:
+        self.calls += 1
         response = TriageResponse(
             risk_level="low",
             summary="Resposta validada pelo runtime fake.",
@@ -60,6 +63,28 @@ class InvalidRuntime:
         return "nao-json"
 
 
+class RepairableRuntime:
+    def __init__(self) -> None:
+        self.calls = 0
+
+    async def generate(self, prompt: str) -> str:
+        self.calls += 1
+        if self.calls == 1:
+            return "A resposta e moderada, encaminhar UBS."
+
+        response = TriageResponse(
+            risk_level="moderate",
+            summary="Resposta corrigida apos retry.",
+            suggested_action="Orientar avaliacao na UBS.",
+            referral="UBS",
+            red_flags=[],
+            sus_basis=["Runtime fake em retry."],
+            limitations="Nao substitui avaliacao profissional.",
+            safety_notice="Buscar atendimento se houver piora.",
+        )
+        return response.model_dump_json()
+
+
 def test_triage_uses_runtime_response_when_valid() -> None:
     response = client.post("/api/triage", json={"case_text": "Caso simples."})
 
@@ -68,10 +93,22 @@ def test_triage_uses_runtime_response_when_valid() -> None:
 
 @pytest.mark.anyio
 async def test_create_triage_response_uses_valid_runtime() -> None:
-    response = await create_triage_response("Caso simples.", FakeRuntime())
+    runtime = FakeRuntime()
+    response = await create_triage_response("Caso simples.", runtime)
 
     assert response.runtime == "ollama"
     assert response.summary == "Resposta validada pelo runtime fake."
+    assert runtime.calls == 1
+
+
+@pytest.mark.anyio
+async def test_create_triage_response_repairs_invalid_runtime_output() -> None:
+    runtime = RepairableRuntime()
+    response = await create_triage_response("Caso simples.", runtime)
+
+    assert response.runtime == "ollama"
+    assert response.summary == "Resposta corrigida apos retry."
+    assert runtime.calls == 2
 
 
 @pytest.mark.anyio

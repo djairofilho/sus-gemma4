@@ -31,9 +31,9 @@
 ## Milestone 3: Structured Outputs
 
 - [~] Define shared JSON schema.
-- [~] Validate model output.
-- [ ] Add repair or retry strategy.
-- [ ] Add schema regression tests.
+- [x] Validate model output.
+- [x] Add repair or retry strategy.
+- [x] Add schema regression tests.
 
 ## Milestone 4: RAG
 
@@ -73,3 +73,4 @@
 - Medical safety expectations must remain conservative.
 - Fine-tuning data quality can create unsafe behavior if not evaluated.
 - Ollama is opt-in and falls back to conservative mock output if unavailable or invalid.
+- Structured output parser accepts plain JSON, fenced JSON, and JSON embedded in extra text.

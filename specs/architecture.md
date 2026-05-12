@@ -33,7 +33,7 @@ See `specs/decisions/0002-use-fastapi-react-ollama-stack.md` for the accepted st
 3. RAG retrieves relevant official SUS context.
 4. Prompt builder combines system policy, user case, retrieved context, and JSON schema.
 5. Ollama runs local inference.
-6. Backend validates structured output.
+6. Backend extracts and validates structured output, with one correction retry before fallback.
 7. UI renders risk level, pathway, red flags, cited basis, and safety notice.
 
 ## Separation Of Responsibilities
@@ -62,3 +62,4 @@ RAG provides:
 - Use ADRs for stack and boundary decisions.
 - Keep default tests deterministic by mocking live Ollama calls.
 - Keep Ollama disabled by default unless `GEMMA_SUS_USE_OLLAMA=true`.
+- Keep structured output parsing and retry logic in backend services, not in route handlers.
