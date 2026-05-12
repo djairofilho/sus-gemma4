@@ -2,12 +2,18 @@
 
 ## Current Task
 
-No active task.
+Add structured output parsing and one correction retry before falling back from Ollama.
 
 ## Checklist
 
-- [x] Ollama integration completed in PR #3.
+- [x] Read relevant specs and testing skill.
+- [x] Create working branch `feat/structured-output-retry`.
+- [ ] Add structured output parser and tests.
+- [ ] Add correction retry in triage flow.
+- [ ] Update specs and task memory.
+- [ ] Run validation.
+- [ ] Open PR and wait for CI.
 
 ## Notes
 
-- Next recommended task: add stricter structured output repair/retry and schema regression tests.
+- Commit policy: keep parser, retry integration, docs, and task closure in separate commits.
