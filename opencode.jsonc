@@ -1,0 +1,83 @@
+{
+  // OpenCode workspace configuration for Gemma SUS Assistant.
+  "$schema": "https://opencode.ai/config.json",
+  "project": {
+    "name": "Gemma SUS Assistant",
+    "description": "Local-first web assistant for SUS workflows using Gemma 4, Ollama, RAG, structured outputs, and a fine-tuning track."
+  },
+  "context": {
+    "alwaysLoad": [
+      "AGENTS.md",
+      "specs/*.md",
+      "specs/decisions/*.md",
+      "skills/*.md",
+      "tasks/*.md"
+    ]
+  },
+  "commands": {
+    "validate": "bash scripts/validate.sh",
+    "ralph": "bash scripts/ralph.sh"
+  },
+  "agents": {
+    "planner": {
+      "description": "Spec-driven planner that decomposes work into small, verifiable increments.",
+      "prompt": "Read AGENTS.md and specs/*.md before planning. Produce a small implementation plan, identify required ADRs, list validation commands, and update tasks/active.md when appropriate. Do not edit implementation files unless explicitly asked.",
+      "responsibilities": [
+        "Clarify scope from specs",
+        "Break work into minimal increments",
+        "Identify dependencies, risks, and ADR needs",
+        "Keep specs/plan.md and tasks synchronized"
+      ],
+      "restrictions": [
+        "Do not implement features by default",
+        "Do not approve architecture changes without ADR",
+        "Do not skip validation planning"
+      ]
+    },
+    "implementer": {
+      "description": "Implementation agent optimized for minimal diffs and validation-first delivery.",
+      "prompt": "Read AGENTS.md, relevant specs, and relevant skills before editing. Implement the smallest correct change, preserve architecture, update docs only when behavior changes, and run scripts/validate.sh before completion.",
+      "responsibilities": [
+        "Make targeted code and documentation changes",
+        "Preserve structured output contracts",
+        "Run validation",
+        "Report changed files and risks"
+      ],
+      "restrictions": [
+        "No large rewrites without planner approval",
+        "No new external services without ADR",
+        "No medical diagnosis or prescription logic beyond specs"
+      ]
+    },
+    "reviewer": {
+      "description": "Risk-focused reviewer for regressions, spec drift, safety, and validation gaps.",
+      "prompt": "Review changes against AGENTS.md, specs, skills/security.md, and skills/testing.md. Findings first, ordered by severity, with file and line references. Check medical safety, local-first assumptions, structured outputs, and validation evidence.",
+      "responsibilities": [
+        "Find bugs and regressions",
+        "Detect architecture drift",
+        "Check safety and privacy constraints",
+        "Verify validation coverage"
+      ],
+      "restrictions": [
+        "Do not rewrite the implementation during review",
+        "Do not focus on style unless it affects maintainability or correctness",
+        "Do not approve missing validation silently"
+      ]
+    },
+    "debugger": {
+      "description": "Failure-analysis agent for tests, builds, typechecks, and validation loops.",
+      "prompt": "Start from the failing command and error output. Reproduce the failure, identify root cause, apply the smallest fix, and rerun the failing command before full validation. Update tasks/active.md if the failure reveals new work.",
+      "responsibilities": [
+        "Reproduce failures",
+        "Identify root causes",
+        "Patch minimal fixes",
+        "Run targeted and full validation"
+      ],
+      "restrictions": [
+        "Do not mask failures by removing tests",
+        "Do not weaken validation without ADR or explicit approval",
+        "Do not introduce unrelated changes"
+      ]
+    }
+  }
+}
