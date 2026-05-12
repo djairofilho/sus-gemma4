@@ -1,0 +1,60 @@
+sources:
+  - id: medpt
+    name: MedPT
+    language: pt-BR
+    size: "384095 QA pairs"
+    use: sft_behavior_and_language
+    access: public_or_research
+    contains_patient_data: false
+    requires_credentialing: false
+    notes: Pares pergunta-resposta em portugues brasileiro com condicoes, especialidades e tipos de pergunta.
+
+  - id: healthqa_br
+    name: HealthQA-BR
+    language: pt-BR
+    size: "5632 questions"
+    use: benchmark_and_light_sft
+    access: public_or_research
+    contains_patient_data: false
+    requires_credentialing: false
+    notes: Questoes em portugues brasileiro com foco no SUS; util para avaliacao e SFT leve.
+
+  - id: medreason_br
+    name: MedReason-BR
+    language: pt-BR
+    size: unknown
+    use: reasoning_style_evaluation
+    access: public_or_research
+    contains_patient_data: false
+    requires_credentialing: false
+    notes: Fonte candidata para raciocinio medico em portugues brasileiro, com validacao de seguranca antes de uso em treino.
+
+  - id: semclinbr
+    name: SemClinBr
+    language: pt-BR
+    size: unknown
+    use: clinical_ner_and_relations
+    access: public_or_research
+    contains_patient_data: false
+    requires_credentialing: false
+    notes: Corpus clinico em portugues para extracao de entidades e relacoes.
+
+  - id: e_natjus_v2
+    name: e-NatJus v2
+    language: pt-BR
+    size: unknown
+    use: health_technology_and_judicialization_evaluation
+    access: public_or_research
+    contains_patient_data: false
+    requires_credentialing: false
+    notes: Notas tecnicas medico-juridicas em portugues; util para avaliacao de tecnologias, judicializacao e linguagem tecnica.
+
+  - id: brateca
+    name: BRATECA
+    language: pt-BR
+    size: unknown
+    use: future_restricted_research
+    access: restricted
+    contains_patient_data: true
+    requires_credentialing: true
+    notes: Dataset hospitalar brasileiro avancado; usar apenas em pesquisa futura com credenciamento, autorizacao, deidentificacao e ADR.
