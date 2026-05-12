@@ -34,6 +34,8 @@ Validate source registries:
 python -m rag.scripts.validate_sources
 ```
 
+This validates official source registries, fine-tuning source registries, and `rag/documents/manifest.yml` metadata.
+
 Ingest local documents into processed chunks:
 
 ```bash
@@ -60,3 +62,4 @@ python -m rag.scripts.search_index --query "falta de ar UPA"
 - RAG content and citations should be in Brazilian Portuguese when sourced from Brazilian public materials.
 - Generated `*.jsonl` chunk and index artifacts are local build outputs and should not be committed.
 - Seed summary documents are lightweight local placeholders for demo retrieval and must not be treated as complete official protocols.
+- Follow `docs/rag-document-acquisition.md` before adding official document extracts.

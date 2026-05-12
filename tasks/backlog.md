@@ -16,7 +16,7 @@
 - [x] Add RAG ingestion and retrieval.
 - [x] Add fine-tuning dataset seed examples.
 - [x] Add demo UX and demo script.
-- [ ] Add official RAG document ingestion policy.
+- [x] Add official RAG document ingestion policy.
 - [ ] Add curated official SUS document extracts.
 - [ ] Add embedding-based RAG retrieval.
 - [ ] Acquire and validate public fine-tuning dataset candidates.
