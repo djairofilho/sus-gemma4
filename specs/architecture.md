@@ -2,23 +2,25 @@
 
 ## Current Phase
 
-Repository foundation for spec-driven, agent-first development. Application modules will be introduced incrementally.
+Repository foundation is complete. The next phase is the initial web application shell using the accepted FastAPI, React, and Ollama stack.
 
 ## Target Stack
 
-- Web app: Vite + React + TypeScript.
-- Local backend: to be decided by ADR before implementation.
+- Frontend: Vite + React + TypeScript.
+- Local backend: Python + FastAPI + Pydantic.
 - Local model runtime: Ollama.
 - Base model: Gemma 4 family when available through the selected runtime.
 - Fine-tuning: Unsloth with LoRA/QLoRA.
 - RAG: local document ingestion, chunking, embeddings, vector search, and cited retrieval.
 - Validation: lint, typecheck, tests, build, schema checks, and safety evals.
 
+See `specs/decisions/0002-use-fastapi-react-ollama-stack.md` for the accepted stack decision.
+
 ## Target Modules
 
 - `app/frontend`: user interface, structured result rendering, local UX.
 - `app/backend`: local API for model calls, RAG orchestration, schema validation.
-- `app/shared`: shared schemas and contracts.
+- `app/shared`: shared schema documentation, generated types, or contract fixtures.
 - `rag`: ingestion, chunking, embeddings, retrieval, document metadata.
 - `finetuning`: datasets, training scripts, notebooks, adapters, eval exports.
 - `evals`: regression and safety cases.
@@ -58,3 +60,4 @@ RAG provides:
 - Keep schemas shared and validated at boundaries.
 - Keep fine-tuning artifacts out of application runtime paths.
 - Use ADRs for stack and boundary decisions.
+- Keep default tests deterministic by mocking live Ollama calls.

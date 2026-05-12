@@ -27,7 +27,15 @@ The script must fail fast when an available validation command fails.
 - `test`
 - `build`
 
+Once application tooling exists, validation should cover both stacks:
+
+- Backend: Ruff linting, Python type checking, Pytest, and API/schema tests.
+- Frontend: ESLint, TypeScript checking, Vitest when present, and Vite build.
+- Integration: mocked Ollama tests by default, live Ollama checks only when explicitly requested.
+
 When package scripts do not exist yet, validation should report them as skipped instead of failing the empty repository foundation.
+
+When Python project files exist, validation should run the configured backend checks. Missing optional tools should be documented and resolved before release-quality milestones.
 
 ## Acceptance Criteria
 

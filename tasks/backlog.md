@@ -2,9 +2,9 @@
 
 ## Repository And Workflow
 
-- [ ] Add PR template after the first app module exists.
-- [ ] Add CI after package tooling exists.
-- [ ] Define branch naming policy.
+- [~] Add PR template after the first app module exists.
+- [~] Add CI after package tooling exists.
+- [~] Define branch naming policy.
 
 ## Product
 
