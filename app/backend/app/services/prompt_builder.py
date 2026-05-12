@@ -34,3 +34,14 @@ Schema esperado:
 Caso:
 {case_text}
 """.strip()
+
+
+def build_triage_repair_prompt(invalid_output: str) -> str:
+    return f"""
+A resposta anterior nao seguiu o JSON esperado.
+Converta a resposta abaixo para somente JSON valido, sem Markdown e sem texto adicional.
+Preserve orientacao conservadora, limites de seguranca e valores permitidos do schema.
+
+Resposta anterior:
+{invalid_output}
+""".strip()
