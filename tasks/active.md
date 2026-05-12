@@ -2,20 +2,12 @@
 
 ## Current Task
 
-Add Ollama integration behind the backend runtime boundary with small, reviewable commits.
+No active task.
 
 ## Checklist
 
-- [x] Read relevant specs and backend skill.
-- [x] Create working branch `feat/ollama-integration`.
-- [x] Add model runtime configuration and interface.
-- [x] Add Ollama client with mocked tests.
-- [x] Integrate triage with safe fallback behavior.
-- [x] Update frontend/docs/specs.
-- [x] Run validation.
-- [x] Open PR and wait for CI.
+- [x] Ollama integration completed in PR #3.
 
 ## Notes
 
-- Commit policy for this task: keep each commit scoped to one layer or documentation update.
-- Pull request: https://github.com/djairofilho/sus-gemma4/pull/3
+- Next recommended task: add stricter structured output repair/retry and schema regression tests.
