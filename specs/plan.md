@@ -20,6 +20,7 @@
 - [x] Create local web app shell.
 - [x] Add structured result components.
 - [x] Add responsive demo layout.
+- [x] Add demo examples, local status, citations, and raw JSON panel.
 
 ## Milestone 2: Ollama Integration
 
@@ -41,15 +42,15 @@
 - [x] Add ingestion pipeline.
 - [x] Add chunking strategy.
 - [~] Add local embeddings/vector search.
-- [~] Add citation rendering.
+- [x] Add citation rendering.
 
 ## Milestone 5: Fine-Tuning Track
 
-- [ ] Define dataset format.
-- [ ] Add seed examples.
-- [ ] Add Unsloth/QLoRA scripts.
+- [x] Define dataset format.
+- [x] Add seed examples.
+- [x] Add Unsloth/QLoRA scripts.
 - [x] Add eval split and safety cases.
-- [ ] Document adapter export path.
+- [x] Document adapter export path.
 
 ## Milestone 6: Review And Release Discipline
 
@@ -75,5 +76,8 @@
 - Ollama is opt-in and falls back to conservative mock output if unavailable or invalid.
 - Structured output parser accepts plain JSON, fenced JSON, and JSON embedded in extra text.
 - SUS safety evals currently run against deterministic mock triage output; live-model evals remain future work.
+- Optional live Ollama evals are implemented behind `GEMMA_SUS_RUN_LIVE_OLLAMA_EVALS=true`; deterministic mock evals remain the default.
 - RAG source registries are defined and validated before document ingestion.
-- RAG currently supports local Markdown/text ingestion and lexical search; embeddings remain future work.
+- RAG currently supports local Markdown/text ingestion, source-backed seed summaries, lexical search with Portuguese normalization/ranking improvements, and cited retrieval; embeddings remain future work.
+- Fine-tuning currently has synthetic JSONL seed, validation, and safety splits plus dataset validation and a non-training QLoRA skeleton; real training remains future work.
+- Demo UX now shows backend/runtime/RAG status, example cases, cited basis, and raw structured JSON for hackathon review.
