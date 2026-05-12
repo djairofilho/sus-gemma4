@@ -17,7 +17,8 @@
 - [x] Add fine-tuning dataset seed examples.
 - [x] Add demo UX and demo script.
 - [x] Add official RAG document ingestion policy.
-- [ ] Add curated official SUS document extracts.
+- [x] Add curated official SUS document extracts.
+- [ ] Add condition/pathway-specific official SUS extracts.
 - [ ] Add embedding-based RAG retrieval.
 - [ ] Acquire and validate public fine-tuning dataset candidates.
 - [ ] Run real QLoRA training outside CI.

@@ -81,6 +81,15 @@ def test_search_boosts_exact_phrase_matches() -> None:
     assert results[0].chunk_id == "chunk_2"
 
 
+def test_search_finds_curated_official_extracts() -> None:
+    from rag.scripts.ingest_documents import ingest_documents
+
+    indexed = index_chunks(ingest_documents())
+    results = search("linhas de cuidado atencao primaria", indexed)
+
+    assert any(result.chunk_id.startswith("official_linhas_cuidado_overview") for result in results)
+
+
 def test_search_ignores_zero_score_chunks() -> None:
     indexed = index_chunks([chunk("chunk_1", "Acolhimento", "UBS e acolhimento.")])
 

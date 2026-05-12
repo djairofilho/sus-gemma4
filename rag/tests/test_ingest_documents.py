@@ -1,6 +1,7 @@
 from rag.scripts.ingest_documents import (
     DocumentManifestEntry,
     chunk_document,
+    ingest_documents,
     normalize_text,
     split_markdown_sections,
 )
@@ -46,3 +47,12 @@ def test_chunk_document_preserves_citation_metadata() -> None:
     assert chunks[0].section == "Sinais de alarme"
     assert chunks[0].source_url == "https://example.test/doc"
     assert chunks[0].language == "pt-BR"
+
+
+def test_ingest_documents_includes_curated_official_extracts() -> None:
+    chunks = ingest_documents()
+    document_ids = {chunk.document_id for chunk in chunks}
+
+    assert "official_linhas_cuidado_overview" in document_ids
+    assert "official_bvsms_overview" in document_ids
+    assert "official_pcdt_overview" in document_ids
