@@ -8,7 +8,6 @@ from pathlib import Path
 
 import yaml
 
-
 ROOT = Path(__file__).resolve().parents[2]
 MANIFEST_PATH = ROOT / "rag" / "documents" / "manifest.yml"
 PROCESSED_PATH = ROOT / "rag" / "documents" / "processed" / "chunks.jsonl"

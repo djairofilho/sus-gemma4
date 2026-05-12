@@ -8,8 +8,12 @@ from collections import Counter
 from dataclasses import asdict, dataclass
 from pathlib import Path
 
-from rag.scripts.ingest_documents import DocumentChunk, PROCESSED_PATH, ingest_documents, write_chunks
-
+from rag.scripts.ingest_documents import (
+    PROCESSED_PATH,
+    DocumentChunk,
+    ingest_documents,
+    write_chunks,
+)
 
 ROOT = Path(__file__).resolve().parents[2]
 INDEX_PATH = ROOT / "rag" / "index" / "lexical_index.jsonl"
@@ -108,7 +112,10 @@ def weighted_terms(chunk: DocumentChunk) -> dict[str, int]:
 
 def write_index(indexed_chunks: list[IndexedChunk], output_path: Path) -> None:
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    lines = [json.dumps(asdict(chunk), ensure_ascii=False, sort_keys=True) for chunk in indexed_chunks]
+    lines = [
+        json.dumps(asdict(chunk), ensure_ascii=False, sort_keys=True)
+        for chunk in indexed_chunks
+    ]
     output_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
