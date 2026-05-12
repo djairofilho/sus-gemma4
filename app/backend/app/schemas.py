@@ -40,3 +40,22 @@ class TriageResponse(BaseModel):
     limitations: str
     safety_notice: str
     runtime: str = "mock"
+
+
+class RagSearchRequest(BaseModel):
+    query: str = Field(min_length=2, max_length=1000)
+    limit: int = Field(default=3, ge=1, le=10)
+
+
+class RagSearchResult(BaseModel):
+    chunk_id: str
+    score: int
+    title: str
+    section: str
+    text: str
+    source_url: str
+    publisher: str
+
+
+class RagSearchResponse(BaseModel):
+    results: list[RagSearchResult]
