@@ -25,6 +25,8 @@ credentials.json
 # Local data
 data/raw/private/
 data/processed/private/
+rag/documents/processed/*.jsonl
+rag/index/*.jsonl
 *.sqlite
 *.db
 
