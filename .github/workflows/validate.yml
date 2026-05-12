@@ -26,5 +26,15 @@ jobs:
         with:
           node-version: "22"
 
+      - name: Install frontend dependencies
+        if: hashFiles('app/frontend/package-lock.json') != ''
+        run: npm ci
+        working-directory: app/frontend
+
+      - name: Install backend dependencies
+        if: hashFiles('app/backend/pyproject.toml') != ''
+        run: pip install -e .[dev]
+        working-directory: app/backend
+
       - name: Validate
         run: bash scripts/validate.sh

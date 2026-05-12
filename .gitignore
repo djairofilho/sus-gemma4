@@ -3,6 +3,10 @@ node_modules/
 .venv/
 venv/
 __pycache__/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
 
 # Build outputs
 dist/

@@ -2,7 +2,7 @@
 
 ## Current Phase
 
-Repository foundation is complete. The next phase is the initial web application shell using the accepted FastAPI, React, and Ollama stack.
+Initial web application shell is in progress using the accepted FastAPI, React, and Ollama stack.
 
 ## Target Stack
 

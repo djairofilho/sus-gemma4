@@ -17,9 +17,9 @@
 ## Milestone 1: Web App Shell
 
 - [x] Select application stack via ADR.
-- [ ] Create local web app shell.
-- [ ] Add structured result components.
-- [ ] Add responsive demo layout.
+- [~] Create local web app shell.
+- [~] Add structured result components.
+- [~] Add responsive demo layout.
 
 ## Milestone 2: Ollama Integration
 
@@ -30,8 +30,8 @@
 
 ## Milestone 3: Structured Outputs
 
-- [ ] Define shared JSON schema.
-- [ ] Validate model output.
+- [~] Define shared JSON schema.
+- [~] Validate model output.
 - [ ] Add repair or retry strategy.
 - [ ] Add schema regression tests.
 
