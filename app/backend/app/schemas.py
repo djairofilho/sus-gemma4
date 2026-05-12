@@ -39,3 +39,4 @@ class TriageResponse(BaseModel):
     sus_basis: list[str]
     limitations: str
     safety_notice: str
+    runtime: str = "mock"

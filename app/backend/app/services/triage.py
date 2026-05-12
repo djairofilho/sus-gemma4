@@ -1,4 +1,11 @@
+import json
+
+from pydantic import ValidationError
+
+from app.model_runtime import ModelRuntime
+from app.ollama_client import OllamaError
 from app.schemas import Referral, RiskLevel, TriageResponse
+from app.services.prompt_builder import build_triage_prompt
 
 URGENT_TERMS = (
     "falta de ar",
@@ -9,6 +16,24 @@ URGENT_TERMS = (
     "pa 18x12",
     "pa 180",
 )
+
+
+async def create_triage_response(
+    case_text: str,
+    model_runtime: ModelRuntime | None,
+) -> TriageResponse:
+    if model_runtime is None:
+        return create_mock_triage_response(case_text)
+
+    try:
+        generated = await model_runtime.generate(build_triage_prompt(case_text))
+        response = TriageResponse.model_validate(json.loads(generated))
+        response.runtime = "ollama"
+        return response
+    except (json.JSONDecodeError, OllamaError, ValidationError):
+        fallback = create_mock_triage_response(case_text)
+        fallback.runtime = "mock_fallback"
+        return fallback
 
 
 def create_mock_triage_response(case_text: str) -> TriageResponse:
@@ -28,6 +53,7 @@ def create_mock_triage_response(case_text: str) -> TriageResponse:
                 "Se houver piora, falta de ar, dor no peito, confusao ou desmaio, "
                 "acionar SAMU 192 ou procurar emergencia."
             ),
+            runtime="mock",
         )
 
     return TriageResponse(
@@ -45,4 +71,5 @@ def create_mock_triage_response(case_text: str) -> TriageResponse:
             "Buscar UPA, emergencia ou SAMU 192 se surgirem sinais de alarme "
             "ou piora importante."
         ),
+        runtime="mock",
     )
