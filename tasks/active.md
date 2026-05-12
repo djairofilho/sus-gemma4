@@ -12,6 +12,7 @@ Add deterministic SUS safety eval cases and runner.
 - [x] Add deterministic eval runner and tests.
 - [x] Integrate eval runner into validation.
 - [x] Update specs and task memory.
+- [x] Run validation.
 - [ ] Open PR and wait for CI.
 
 ## Notes
