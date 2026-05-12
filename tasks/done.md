@@ -46,3 +46,12 @@
 - Added tests for eval loading and property checks.
 - Integrated safety evals into `scripts/validate.sh` and CI.
 - Opened PR: https://github.com/djairofilho/sus-gemma4/pull/5
+
+## RAG Source Foundation
+
+- Added data source policy for RAG and fine-tuning sources.
+- Added official RAG source registry.
+- Added fine-tuning and benchmark source registry.
+- Added local RAG document layout.
+- Added source metadata validator and tests.
+- Integrated RAG validation into `scripts/validate.sh`.
