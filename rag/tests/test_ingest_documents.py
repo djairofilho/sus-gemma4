@@ -56,3 +56,5 @@ def test_ingest_documents_includes_curated_official_extracts() -> None:
     assert "official_linhas_cuidado_overview" in document_ids
     assert "official_bvsms_overview" in document_ids
     assert "official_pcdt_overview" in document_ids
+    assert "official_rename_medicines_overview" in document_ids
+    assert "official_bvsms_referral_search_overview" in document_ids

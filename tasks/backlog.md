@@ -18,7 +18,8 @@
 - [x] Add demo UX and demo script.
 - [x] Add official RAG document ingestion policy.
 - [x] Add curated official SUS document extracts.
-- [ ] Add condition/pathway-specific official SUS extracts.
+- [x] Add condition/pathway-specific official SUS extracts.
+- [ ] Add complete condition/pathway official SUS protocol extracts.
 - [ ] Add embedding-based RAG retrieval.
 - [ ] Acquire and validate public fine-tuning dataset candidates.
 - [ ] Run real QLoRA training outside CI.

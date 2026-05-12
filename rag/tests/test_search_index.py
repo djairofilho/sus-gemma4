@@ -90,6 +90,29 @@ def test_search_finds_curated_official_extracts() -> None:
     assert any(result.chunk_id.startswith("official_linhas_cuidado_overview") for result in results)
 
 
+def test_search_finds_medicine_safety_extract() -> None:
+    from rag.scripts.ingest_documents import ingest_documents
+
+    indexed = index_chunks(ingest_documents())
+    results = search("receituario azul medicamento controlado prescricao UBS", indexed)
+
+    assert any(
+        result.chunk_id.startswith("official_rename_medicines_overview") for result in results
+    )
+
+
+def test_search_finds_referral_discovery_extract() -> None:
+    from rag.scripts.ingest_documents import ingest_documents
+
+    indexed = index_chunks(ingest_documents())
+    results = search("encaminhamento especialista regulacao atencao basica", indexed)
+
+    assert any(
+        result.chunk_id.startswith("official_bvsms_referral_search_overview")
+        for result in results
+    )
+
+
 def test_search_ignores_zero_score_chunks() -> None:
     indexed = index_chunks([chunk("chunk_1", "Acolhimento", "UBS e acolhimento.")])
 

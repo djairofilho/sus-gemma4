@@ -1,0 +1,55 @@
+downloads:
+  - id: linhas_cuidado_home_html
+    source_id: ministerio_saude_linhas_cuidado
+    title: Linhas de Cuidado - pagina inicial
+    source_url: https://linhasdecuidado.saude.gov.br
+    downloaded_at: "2026-05-12"
+    local_download_path: data/raw/public/rag/linhas_cuidado_home.html
+    file_type: html
+    license_or_usage_note: Pagina publica oficial; manter HTML bruto local/ignorado e commitar apenas extratos curados.
+    review_status: downloaded_for_curation
+    notes: Fonte para fluxos assistenciais, coordenacao pela APS e organizacao das Redes de Atencao a Saude.
+
+  - id: bvsms_home_html
+    source_id: bvs_ms
+    title: Biblioteca Virtual em Saude do Ministerio da Saude - pagina inicial
+    source_url: https://bvsms.saude.gov.br
+    downloaded_at: "2026-05-12"
+    local_download_path: data/raw/public/rag/bvsms_home.html
+    file_type: html
+    license_or_usage_note: Pagina publica oficial; manter HTML bruto local/ignorado e commitar apenas extratos curados.
+    review_status: downloaded_for_curation
+    notes: Fonte para descoberta de publicacoes, manuais, legislacao, terminologia e materiais do Ministerio da Saude.
+
+  - id: pcdt_home_html
+    source_id: ministerio_saude_pcdt
+    title: Protocolos Clinicos e Diretrizes Terapeuticas - pagina inicial
+    source_url: https://www.gov.br/saude/pt-br/assuntos/pcdt
+    downloaded_at: "2026-05-12"
+    local_download_path: data/raw/public/rag/pcdt_home.html
+    file_type: html
+    license_or_usage_note: Pagina publica oficial sob termos do portal gov.br; manter HTML bruto local/ignorado e commitar apenas extratos curados.
+    review_status: downloaded_for_curation
+    notes: Fonte para definicao de PCDT, DDT, protocolos de uso, diretrizes e linhas de cuidado.
+
+  - id: rename_home_html
+    source_id: ministerio_saude_rename
+    title: Relacao Nacional de Medicamentos Essenciais - pagina inicial
+    source_url: https://www.gov.br/saude/pt-br/composicao/sectics/daf/rename
+    downloaded_at: "2026-05-12"
+    local_download_path: data/raw/public/rag/rename_home.html
+    file_type: html
+    license_or_usage_note: Pagina publica oficial; manter HTML bruto local/ignorado e commitar apenas extratos curados.
+    review_status: downloaded_for_curation
+    notes: Fonte para contexto de medicamentos essenciais; nao autoriza prescricao automatizada.
+
+  - id: protocolos_encaminhamento_busca_html
+    source_id: ministerio_saude_protocolos_encaminhamento
+    title: Busca BVS MS por protocolos de encaminhamento da atencao basica
+    source_url: https://bvsms.saude.gov.br
+    downloaded_at: "2026-05-12"
+    local_download_path: data/raw/public/rag/bvsms_protocolos_encaminhamento_search.html
+    file_type: html
+    license_or_usage_note: Pagina publica oficial ou resultado de busca para curadoria manual; manter bruto local/ignorado.
+    review_status: downloaded_for_curation
+    notes: Ponto inicial para localizar protocolos de encaminhamento e regulacao entre atencao basica e especializada.
