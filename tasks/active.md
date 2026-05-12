@@ -13,8 +13,9 @@ Add Ollama integration behind the backend runtime boundary with small, reviewabl
 - [x] Integrate triage with safe fallback behavior.
 - [x] Update frontend/docs/specs.
 - [x] Run validation.
-- [ ] Open PR and wait for CI.
+- [x] Open PR and wait for CI.
 
 ## Notes
 
 - Commit policy for this task: keep each commit scoped to one layer or documentation update.
+- Pull request: https://github.com/djairofilho/sus-gemma4/pull/3
