@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { requestTriage } from "./api.ts";
-import { referralLabels, riskLabels } from "./presentation.ts";
+import { referralLabels, riskLabels, runtimeLabels } from "./presentation.ts";
 import type { TriageResponse } from "./types.ts";
 
 const exampleCase = "Paciente relata PA 18x12, cefaleia forte e falta de ar. Esta na UBS.";
@@ -83,6 +83,10 @@ function ResultPanel({ result }: { result: TriageResponse | null }) {
       <p className="summary">{result.summary}</p>
 
       <dl className="structured-list">
+        <div>
+          <dt>Runtime</dt>
+          <dd>{runtimeLabels[result.runtime] ?? result.runtime}</dd>
+        </div>
         <div>
           <dt>Conduta sugerida</dt>
           <dd>{result.suggested_action}</dd>

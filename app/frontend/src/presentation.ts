@@ -16,3 +16,9 @@ export const referralLabels: Record<Referral, string> = {
   administrative_guidance: "Orientacao administrativa",
   unknown: "A definir",
 };
+
+export const runtimeLabels: Record<string, string> = {
+  mock: "Mock local",
+  ollama: "Ollama local",
+  mock_fallback: "Fallback seguro",
+};

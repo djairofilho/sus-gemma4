@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { referralLabels, riskLabels } from "./presentation.ts";
+import { referralLabels, riskLabels, runtimeLabels } from "./presentation.ts";
 
 describe("presentation labels", () => {
   it("labels emergency risk in Portuguese", () => {
@@ -10,5 +10,10 @@ describe("presentation labels", () => {
   it("labels SUS referral options", () => {
     expect(referralLabels.UBS).toBe("UBS");
     expect(referralLabels.SAMU).toBe("SAMU 192");
+  });
+
+  it("labels local runtime state", () => {
+    expect(runtimeLabels.ollama).toBe("Ollama local");
+    expect(runtimeLabels.mock_fallback).toBe("Fallback seguro");
   });
 });
