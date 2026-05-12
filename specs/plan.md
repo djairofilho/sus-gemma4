@@ -37,7 +37,7 @@
 
 ## Milestone 4: RAG
 
-- [ ] Define document metadata model.
+- [x] Define document metadata model.
 - [ ] Add ingestion pipeline.
 - [ ] Add chunking strategy.
 - [ ] Add local embeddings/vector search.
@@ -75,3 +75,4 @@
 - Ollama is opt-in and falls back to conservative mock output if unavailable or invalid.
 - Structured output parser accepts plain JSON, fenced JSON, and JSON embedded in extra text.
 - SUS safety evals currently run against deterministic mock triage output; live-model evals remain future work.
+- RAG source registries are defined and validated before document ingestion.

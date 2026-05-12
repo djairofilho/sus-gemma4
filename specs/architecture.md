@@ -53,6 +53,8 @@ RAG provides:
 - Source citations.
 - Local document grounding.
 
+The RAG foundation starts with source registries and local document layout before ingestion or embeddings. Source registries separate official RAG sources from fine-tuning and benchmark datasets.
+
 ## Architecture Rules
 
 - Keep model runtime replaceable behind a small interface.

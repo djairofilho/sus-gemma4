@@ -6,8 +6,8 @@ No active task.
 
 ## Checklist
 
-- [x] SUS safety evals completed in PR #5.
+- [x] Local RAG document foundation completed in PR pending.
 
 ## Notes
 
-- Next recommended task: add local RAG document foundation.
+- Next recommended task: add RAG ingestion pipeline for local documents.

@@ -1,0 +1,110 @@
+sources:
+  - id: ministerio_saude_pcdt
+    name: Protocolos Clinicos e Diretrizes Terapeuticas
+    category: clinical_guidelines
+    publisher: Ministerio da Saude
+    base_url: https://www.gov.br/saude/pt-br/assuntos/pcdt
+    scope: federal
+    use: rag
+    access: public
+    citation_required: true
+    notes: Fonte oficial para protocolos clinicos, diretrizes terapeuticas e condutas baseadas em politicas publicas brasileiras.
+
+  - id: ministerio_saude_linhas_cuidado
+    name: Linhas de Cuidado
+    category: care_pathways
+    publisher: Ministerio da Saude
+    base_url: https://linhasdecuidado.saude.gov.br
+    scope: federal
+    use: rag
+    access: public
+    citation_required: true
+    notes: Fonte oficial para fluxos assistenciais e organizacao de cuidado no SUS.
+
+  - id: ministerio_saude_protocolos_atencao_basica
+    name: Protocolos da Atencao Basica
+    category: primary_care_protocols
+    publisher: Ministerio da Saude
+    base_url: https://bvsms.saude.gov.br
+    scope: federal
+    use: rag
+    access: public
+    citation_required: true
+    notes: Materiais da atencao primaria, incluindo cadernos e protocolos publicados ou indexados pela BVS MS.
+
+  - id: ministerio_saude_protocolos_encaminhamento
+    name: Protocolos de Encaminhamento da Atencao Basica para Atencao Especializada
+    category: referral_protocols
+    publisher: Ministerio da Saude
+    base_url: https://bvsms.saude.gov.br
+    scope: federal
+    use: rag
+    access: public
+    citation_required: true
+    notes: Fonte para criterios de encaminhamento e regulacao entre atencao basica e especializada.
+
+  - id: ministerio_saude_rename
+    name: Relacao Nacional de Medicamentos Essenciais
+    category: medicines_list
+    publisher: Ministerio da Saude
+    base_url: https://www.gov.br/saude/pt-br/composicao/sectics/daf/rename
+    scope: federal
+    use: rag
+    access: public
+    citation_required: true
+    notes: Fonte oficial para medicamentos essenciais; nao autoriza prescricao automatizada.
+
+  - id: conitec
+    name: CONITEC
+    category: health_technology_assessment
+    publisher: Comissao Nacional de Incorporacao de Tecnologias no SUS
+    base_url: https://www.gov.br/conitec
+    scope: federal
+    use: rag
+    access: public
+    citation_required: true
+    notes: Recomendacoes, relatorios, PCDT e avaliacoes de tecnologias em saude.
+
+  - id: bvs_ms
+    name: Biblioteca Virtual em Saude do Ministerio da Saude
+    category: public_health_library
+    publisher: Ministerio da Saude
+    base_url: https://bvsms.saude.gov.br
+    scope: federal
+    use: rag
+    access: public
+    citation_required: true
+    notes: Biblioteca oficial para documentos, manuais, cadernos, portarias e publicacoes de saude publica.
+
+  - id: decs_mesh
+    name: DeCS/MeSH
+    category: terminology
+    publisher: BIREME/OPAS/OMS
+    base_url: https://decs.bvsalud.org
+    scope: latin_america
+    use: terminology_normalization
+    access: public
+    citation_required: true
+    notes: Fonte para normalizacao terminologica, descritores, sinonimos e mapeamento multilingue.
+
+  - id: datasus_open_data
+    name: Open DataSUS e DataSUS
+    category: structured_public_data
+    publisher: Ministerio da Saude
+    base_url: https://opendatasus.saude.gov.br
+    scope: federal
+    use: structured_context
+    access: public
+    citation_required: true
+    notes: Dados publicos estruturados para contexto epidemiologico e operacional; nao usar para identificacao de pacientes.
+
+  - id: cnes
+    name: Cadastro Nacional de Estabelecimentos de Saude
+    category: facilities_registry
+    publisher: Ministerio da Saude
+    base_url: https://cnes.datasus.gov.br
+    scope: federal
+    use: structured_context
+    access: public
+    citation_required: true
+    notes: Fonte para estabelecimentos, servicos e contexto territorial de rede assistencial.
