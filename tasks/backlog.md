@@ -11,8 +11,8 @@
 - [x] Build web app shell.
 - [x] Add Ollama integration.
 - [x] Add structured output schema validation.
+- [x] Add safety eval cases.
 - [ ] Add RAG ingestion and retrieval.
-- [ ] Add safety eval cases.
 - [ ] Add fine-tuning dataset seed examples.
 
 ## Documentation

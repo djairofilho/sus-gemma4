@@ -38,3 +38,11 @@
 - Added one correction retry before conservative fallback.
 - Documented retry behavior in specs.
 - Opened PR: https://github.com/djairofilho/sus-gemma4/pull/4
+
+## SUS Safety Evals
+
+- Added synthetic, non-identifiable safety eval cases.
+- Added deterministic eval runner using local mock runtime.
+- Added tests for eval loading and property checks.
+- Integrated safety evals into `scripts/validate.sh` and CI.
+- Opened PR: https://github.com/djairofilho/sus-gemma4/pull/5

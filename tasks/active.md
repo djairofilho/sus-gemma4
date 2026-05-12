@@ -6,8 +6,8 @@ No active task.
 
 ## Checklist
 
-- [x] Structured output retry completed in PR #4.
+- [x] SUS safety evals completed in PR #5.
 
 ## Notes
 
-- Next recommended task: add SUS safety eval cases.
+- Next recommended task: add local RAG document foundation.

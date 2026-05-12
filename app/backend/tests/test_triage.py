@@ -2,7 +2,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app.main import app
-from app.schemas import TriageResponse
+from app.schemas import Referral, RiskLevel, TriageResponse
 from app.services.triage import create_triage_response
 
 client = TestClient(app)
@@ -46,10 +46,10 @@ class FakeRuntime:
     async def generate(self, prompt: str) -> str:
         self.calls += 1
         response = TriageResponse(
-            risk_level="low",
+            risk_level=RiskLevel.LOW,
             summary="Resposta validada pelo runtime fake.",
             suggested_action="Orientar acompanhamento na UBS.",
-            referral="UBS",
+            referral=Referral.UBS,
             red_flags=[],
             sus_basis=["Runtime fake em teste."],
             limitations="Nao substitui avaliacao profissional.",
@@ -73,10 +73,10 @@ class RepairableRuntime:
             return "A resposta e moderada, encaminhar UBS."
 
         response = TriageResponse(
-            risk_level="moderate",
+            risk_level=RiskLevel.MODERATE,
             summary="Resposta corrigida apos retry.",
             suggested_action="Orientar avaliacao na UBS.",
-            referral="UBS",
+            referral=Referral.UBS,
             red_flags=[],
             sus_basis=["Runtime fake em retry."],
             limitations="Nao substitui avaliacao profissional.",
