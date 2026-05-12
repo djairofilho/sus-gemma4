@@ -20,3 +20,9 @@ export type TriageResponse = {
   safety_notice: string;
   runtime: "mock" | "ollama" | "mock_fallback";
 };
+
+export type HealthResponse = {
+  status: string;
+  model_runtime: string;
+  rag_index: string;
+};

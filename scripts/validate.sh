@@ -69,6 +69,29 @@ python_command() {
   fi
 }
 
+python_command_with_modules() {
+  for candidate in python python3 python.exe; do
+    if ! can_run_command "$candidate"; then
+      continue
+    fi
+
+    has_modules=1
+    for module_name in "$@"; do
+      if ! "$candidate" -m "$module_name" --version >/dev/null 2>&1; then
+        has_modules=0
+        break
+      fi
+    done
+
+    if [ "$has_modules" -eq 1 ]; then
+      printf '%s\n' "$candidate"
+      return 0
+    fi
+  done
+
+  return 1
+}
+
 run_python_backend_if_exists() {
   backend_dir="app/backend"
 
@@ -77,23 +100,8 @@ run_python_backend_if_exists() {
     return 0
   fi
 
-  if ! python_bin="$(python_command)"; then
-    log "skip backend: python not found"
-    return 0
-  fi
-
-  if ! (cd "$backend_dir" && "$python_bin" -m ruff --version >/dev/null 2>&1); then
-    log "skip backend: ruff not installed for $python_bin"
-    return 0
-  fi
-
-  if ! (cd "$backend_dir" && "$python_bin" -m mypy --version >/dev/null 2>&1); then
-    log "skip backend: mypy not installed for $python_bin"
-    return 0
-  fi
-
-  if ! (cd "$backend_dir" && "$python_bin" -m pytest --version >/dev/null 2>&1); then
-    log "skip backend: pytest not installed for $python_bin"
+  if ! python_bin="$(python_command_with_modules ruff mypy pytest)"; then
+    log "skip backend: python with ruff, mypy, and pytest not found"
     return 0
   fi
 
@@ -113,13 +121,8 @@ run_safety_evals_if_exists() {
     return 0
   fi
 
-  if ! python_bin="$(python_command)"; then
-    log "skip safety evals: python not found"
-    return 0
-  fi
-
-  if ! "$python_bin" -m pytest --version >/dev/null 2>&1; then
-    log "skip safety evals: pytest not installed for $python_bin"
+  if ! python_bin="$(python_command_with_modules pytest)"; then
+    log "skip safety evals: python with pytest not found"
     return 0
   fi
 
@@ -128,6 +131,9 @@ run_safety_evals_if_exists() {
 
   log "run safety eval cases"
   "$python_bin" evals/scripts/run_safety_evals.py
+
+  log "run optional live Ollama eval gate"
+  "$python_bin" -m evals.scripts.run_live_ollama_evals
 }
 
 run_rag_validation_if_exists() {
@@ -136,13 +142,8 @@ run_rag_validation_if_exists() {
     return 0
   fi
 
-  if ! python_bin="$(python_command)"; then
-    log "skip rag validation: python not found"
-    return 0
-  fi
-
-  if ! "$python_bin" -m pytest --version >/dev/null 2>&1; then
-    log "skip rag validation: pytest not installed for $python_bin"
+  if ! python_bin="$(python_command_with_modules pytest)"; then
+    log "skip rag validation: python with pytest not found"
     return 0
   fi
 
@@ -157,6 +158,24 @@ run_rag_validation_if_exists() {
 
   log "run rag lexical index build"
   "$python_bin" -m rag.scripts.search_index --build
+}
+
+run_finetuning_validation_if_exists() {
+  if [ ! -f "finetuning/scripts/validate_dataset.py" ]; then
+    log "skip fine-tuning validation: dataset validator not found"
+    return 0
+  fi
+
+  if ! python_bin="$(python_command_with_modules pytest)"; then
+    log "skip fine-tuning validation: python with pytest not found"
+    return 0
+  fi
+
+  log "run fine-tuning tests"
+  "$python_bin" -m pytest finetuning/tests
+
+  log "run fine-tuning dataset validation"
+  "$python_bin" -m finetuning.scripts.validate_dataset
 }
 
 run_if_executable_exists() {
@@ -184,6 +203,7 @@ run_if_package_script_exists "app/frontend" build
 run_python_backend_if_exists
 run_safety_evals_if_exists
 run_rag_validation_if_exists
+run_finetuning_validation_if_exists
 run_if_executable_exists "./scripts/validate-extra.sh" "extra validation"
 
 log "validate: complete"

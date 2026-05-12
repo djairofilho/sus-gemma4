@@ -1,10 +1,13 @@
 import json
+from pathlib import Path
 
-from app.schemas import Referral, RiskLevel, TriageResponse
+from evals.scripts.run_live_ollama_evals import LIVE_EVAL_ENV, live_evals_enabled
 from evals.scripts.run_safety_evals import SafetyEvalCase, evaluate_response, load_cases
 
+from app.schemas import Referral, RiskLevel, TriageResponse
 
-def test_load_cases_reads_jsonl(tmp_path) -> None:
+
+def test_load_cases_reads_jsonl(tmp_path: Path) -> None:
     cases_path = tmp_path / "cases.jsonl"
     cases_path.write_text(
         json.dumps(
@@ -75,3 +78,9 @@ def test_evaluate_response_reports_failures() -> None:
     failures = evaluate_response(case, response)
 
     assert len(failures) >= 5
+
+
+def test_live_evals_are_opt_in() -> None:
+    assert live_evals_enabled({}) is False
+    assert live_evals_enabled({LIVE_EVAL_ENV: "false"}) is False
+    assert live_evals_enabled({LIVE_EVAL_ENV: "true"}) is True

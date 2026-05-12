@@ -2,10 +2,22 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app.main import app
-from app.schemas import Referral, RiskLevel, TriageResponse
+from app.schemas import RagSearchResult, Referral, RiskLevel, TriageResponse
 from app.services.triage import create_triage_response
 
 client = TestClient(app)
+
+
+def rag_result() -> RagSearchResult:
+    return RagSearchResult(
+        chunk_id="chunk_1",
+        score=3,
+        title="Fluxo UBS UPA SAMU",
+        section="Sinais de alarme",
+        text="Falta de ar e dor no peito indicam encaminhamento para urgencia.",
+        source_url="https://example.test/fluxo",
+        publisher="Ministerio da Saude",
+    )
 
 
 def test_triage_returns_schema_valid_response() -> None:
@@ -32,6 +44,20 @@ def test_triage_escalates_mock_red_flags() -> None:
     assert body["referral"] == "UPA"
     assert "falta de ar" in body["red_flags"]
     assert "dor no peito" in body["red_flags"]
+
+
+def test_triage_uses_retrieved_rag_basis(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr("app.main.search_rag", lambda query: [rag_result()])
+
+    response = client.post(
+        "/api/triage",
+        json={"case_text": "Paciente com dor no peito e falta de ar."},
+    )
+
+    assert response.status_code == 200
+    assert response.json()["sus_basis"] == [
+        "Fluxo UBS UPA SAMU - Sinais de alarme: https://example.test/fluxo"
+    ]
 
 
 def test_triage_rejects_empty_case_text() -> None:
@@ -117,3 +143,16 @@ async def test_create_triage_response_falls_back_on_invalid_runtime() -> None:
 
     assert response.runtime == "mock_fallback"
     assert response.risk_level == "emergency"
+
+
+@pytest.mark.anyio
+async def test_create_triage_response_passes_rag_context_to_prompt() -> None:
+    runtime = FakeRuntime()
+    response = await create_triage_response(
+        "Paciente com falta de ar.",
+        runtime,
+        rag_context=[rag_result()],
+    )
+
+    assert response.runtime == "ollama"
+    assert runtime.calls == 1

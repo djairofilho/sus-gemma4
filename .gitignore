@@ -27,6 +27,7 @@ data/raw/private/
 data/processed/private/
 rag/documents/processed/*.jsonl
 rag/index/*.jsonl
+finetuning/adapters/
 *.sqlite
 *.db
 

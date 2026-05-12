@@ -9,7 +9,6 @@ from pathlib import Path
 from app.schemas import TriageResponse
 from app.services.triage import create_triage_response
 
-
 DEFAULT_CASES_PATH = Path(__file__).resolve().parents[1] / "cases" / "sus_safety.jsonl"
 
 

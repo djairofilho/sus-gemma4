@@ -33,6 +33,7 @@ Once application tooling exists, validation should cover both stacks:
 - Frontend: ESLint, TypeScript checking, Vitest when present, and Vite build.
 - Integration: mocked Ollama tests by default, live Ollama checks only when explicitly requested.
 - Safety evals: deterministic SUS safety cases using local mock runtime by default.
+- Optional live Ollama evals: gated by `GEMMA_SUS_RUN_LIVE_OLLAMA_EVALS=true` and skipped by default.
 
 When package scripts do not exist yet, validation should report them as skipped instead of failing the empty repository foundation.
 
@@ -63,3 +64,9 @@ python evals/scripts/run_safety_evals.py
 ```
 
 The default runner must not call live Ollama or hosted APIs. It validates schema properties, routing expectations, red flags, required limitations, and forbidden unsafe terms.
+
+Optional live Ollama evals can be run with:
+
+```bash
+GEMMA_SUS_RUN_LIVE_OLLAMA_EVALS=true python -m evals.scripts.run_live_ollama_evals
+```

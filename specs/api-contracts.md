@@ -34,10 +34,7 @@ This file defines stable contracts for internal APIs and structured model output
 
 - `POST /api/triage`: submit case text and receive structured guidance.
 - `GET /api/health`: verify app, Ollama, and index status.
-
-## Future Endpoints
-
-- `POST /api/rag/search`: retrieve local protocol snippets.
+- `POST /api/rag/search`: retrieve local protocol snippets from the local RAG index.
 
 ## Request Drafts
 
@@ -50,3 +47,30 @@ This file defines stable contracts for internal APIs and structured model output
 ```
 
 The endpoint returns a schema-valid response from live Ollama only when `GEMMA_SUS_USE_OLLAMA=true`. Otherwise it uses the local mock runtime. Model output may be plain JSON, fenced JSON, or JSON surrounded by extra text. Invalid schema output triggers one correction retry. Invalid, unavailable, or unrecoverable Ollama responses fall back to a conservative mock response with `runtime` set to `mock_fallback`.
+
+### `POST /api/rag/search`
+
+```json
+{
+  "query": "falta de ar UPA",
+  "limit": 3
+}
+```
+
+The endpoint returns local retrieved chunks with citation metadata:
+
+```json
+{
+  "results": [
+    {
+      "chunk_id": "string",
+      "score": 1,
+      "title": "string",
+      "section": "string",
+      "text": "string",
+      "source_url": "string",
+      "publisher": "string"
+    }
+  ]
+}
+```

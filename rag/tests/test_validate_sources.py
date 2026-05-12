@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import yaml
 
 from rag.scripts.validate_sources import (
@@ -6,7 +8,7 @@ from rag.scripts.validate_sources import (
 )
 
 
-def write_yaml(path, payload: dict[str, object]) -> None:
+def write_yaml(path: Path, payload: dict[str, object]) -> None:
     path.write_text(yaml.safe_dump(payload, sort_keys=False), encoding="utf-8")
 
 
@@ -39,14 +41,14 @@ def finetuning_source() -> dict[str, object]:
     }
 
 
-def test_validate_official_sources_accepts_valid_registry(tmp_path) -> None:
+def test_validate_official_sources_accepts_valid_registry(tmp_path: Path) -> None:
     path = tmp_path / "official.yml"
     write_yaml(path, {"sources": [official_source()]})
 
     assert validate_official_sources(path) == []
 
 
-def test_validate_official_sources_requires_citation(tmp_path) -> None:
+def test_validate_official_sources_requires_citation(tmp_path: Path) -> None:
     source = official_source()
     source["citation_required"] = False
     path = tmp_path / "official.yml"
@@ -57,7 +59,7 @@ def test_validate_official_sources_requires_citation(tmp_path) -> None:
     assert any("must require citation" in failure.reason for failure in failures)
 
 
-def test_validate_official_sources_requires_https_url(tmp_path) -> None:
+def test_validate_official_sources_requires_https_url(tmp_path: Path) -> None:
     source = official_source()
     source["base_url"] = "http://example.test"
     path = tmp_path / "official.yml"
@@ -68,14 +70,14 @@ def test_validate_official_sources_requires_https_url(tmp_path) -> None:
     assert any("https URL" in failure.reason for failure in failures)
 
 
-def test_validate_finetuning_sources_accepts_valid_registry(tmp_path) -> None:
+def test_validate_finetuning_sources_accepts_valid_registry(tmp_path: Path) -> None:
     path = tmp_path / "finetuning.yml"
     write_yaml(path, {"sources": [finetuning_source()]})
 
     assert validate_finetuning_sources(path) == []
 
 
-def test_validate_finetuning_sources_restricts_patient_data(tmp_path) -> None:
+def test_validate_finetuning_sources_restricts_patient_data(tmp_path: Path) -> None:
     source = finetuning_source()
     source["contains_patient_data"] = True
     source["requires_credentialing"] = False

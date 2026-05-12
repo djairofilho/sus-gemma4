@@ -1,4 +1,4 @@
-import type { TriageResponse } from "./types.ts";
+import type { HealthResponse, TriageResponse } from "./types.ts";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:8000";
 
@@ -14,4 +14,14 @@ export async function requestTriage(caseText: string): Promise<TriageResponse> {
   }
 
   return (await response.json()) as TriageResponse;
+}
+
+export async function requestHealth(): Promise<HealthResponse> {
+  const response = await fetch(`${API_BASE_URL}/api/health`);
+
+  if (!response.ok) {
+    throw new Error("Backend local indisponivel.");
+  }
+
+  return (await response.json()) as HealthResponse;
 }

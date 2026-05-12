@@ -3,7 +3,14 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import get_settings
 from app.ollama_client import OllamaClient
-from app.schemas import HealthResponse, TriageRequest, TriageResponse
+from app.schemas import (
+    HealthResponse,
+    RagSearchRequest,
+    RagSearchResponse,
+    TriageRequest,
+    TriageResponse,
+)
+from app.services.rag_search import rag_index_status, search_rag
 from app.services.triage import create_triage_response
 
 app = FastAPI(
@@ -27,7 +34,7 @@ def health() -> HealthResponse:
     return HealthResponse(
         status="ok",
         model_runtime="ollama_enabled" if settings.use_ollama else "mock",
-        rag_index="not_configured",
+        rag_index=rag_index_status(),
     )
 
 
@@ -42,4 +49,10 @@ async def triage(request: TriageRequest) -> TriageResponse:
             settings.ollama_timeout_seconds,
         )
 
-    return await create_triage_response(request.case_text, runtime)
+    rag_context = search_rag(request.case_text)
+    return await create_triage_response(request.case_text, runtime, rag_context=rag_context)
+
+
+@app.post("/api/rag/search", response_model=RagSearchResponse)
+def rag_search(request: RagSearchRequest) -> RagSearchResponse:
+    return RagSearchResponse(results=search_rag(request.query, request.limit))

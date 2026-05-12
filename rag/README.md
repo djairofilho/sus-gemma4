@@ -4,7 +4,7 @@ Local retrieval foundation for official SUS-oriented sources.
 
 ## Current Scope
 
-This module currently supports local source metadata validation, local Markdown/text ingestion, section-based chunking, and a simple lexical search index. It does not download or scrape documents.
+This module currently supports local source metadata validation, local Markdown/text ingestion, section-based chunking, and a lexical search index with accent normalization, stopword filtering, title/section weighting, and phrase-match boosts. It does not download or scrape documents.
 
 ## Pipeline
 
@@ -59,3 +59,4 @@ python -m rag.scripts.search_index --query "falta de ar UPA"
 - Do not mix RAG official sources with fine-tuning datasets.
 - RAG content and citations should be in Brazilian Portuguese when sourced from Brazilian public materials.
 - Generated `*.jsonl` chunk and index artifacts are local build outputs and should not be committed.
+- Seed summary documents are lightweight local placeholders for demo retrieval and must not be treated as complete official protocols.

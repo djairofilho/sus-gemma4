@@ -21,4 +21,11 @@ export const runtimeLabels: Record<string, string> = {
   mock: "Mock local",
   ollama: "Ollama local",
   mock_fallback: "Fallback seguro",
+  mock_backend: "Backend mock",
+  ollama_enabled: "Ollama habilitado",
+};
+
+export const ragIndexLabels: Record<string, string> = {
+  ready: "Indice RAG pronto",
+  not_built: "Indice RAG sera criado localmente",
 };
