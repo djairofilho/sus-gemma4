@@ -11,7 +11,7 @@ Add structured output parsing and one correction retry before falling back from 
 - [x] Add structured output parser and tests.
 - [x] Add correction retry in triage flow.
 - [x] Update specs and task memory.
-- [ ] Run validation.
+- [x] Run validation.
 - [ ] Open PR and wait for CI.
 
 ## Notes
