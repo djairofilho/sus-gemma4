@@ -64,3 +64,17 @@
 - Added local lexical index and search.
 - Preserved citation metadata in chunks and search results.
 - Integrated ingestion and index build into validation.
+
+## MVP Foundations Completion
+
+- Added backend RAG search API at `POST /api/rag/search`.
+- Grounded `/api/triage` with retrieved local RAG context while preserving the triage output schema.
+- Extended `/api/health` with RAG index status.
+- Added source-backed local RAG seed summaries and improved lexical ranking with accent normalization, stopword filtering, title/section weighting, and phrase boosts.
+- Added synthetic fine-tuning JSONL seed, validation, and safety splits.
+- Added fine-tuning dataset validation and a non-training Unsloth/QLoRA skeleton.
+- Improved demo UX with example cases, backend/runtime/RAG status, citations, and raw JSON rendering.
+- Added hackathon demo script in `docs/demo-script.md`.
+- Added optional live Ollama eval gate behind `GEMMA_SUS_RUN_LIVE_OLLAMA_EVALS=true`.
+- Improved `scripts/validate.sh` so local Bash selects a Python with required validation modules when available.
+- Validated and merged PR: https://github.com/djairofilho/sus-gemma4/pull/8
