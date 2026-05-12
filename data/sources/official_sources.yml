@@ -54,6 +54,17 @@ sources:
     citation_required: true
     notes: Fonte oficial para medicamentos essenciais; nao autoriza prescricao automatizada.
 
+  - id: ministerio_saude_saude_a_z
+    name: Saude de A a Z
+    category: public_health_topics
+    publisher: Ministerio da Saude
+    base_url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z
+    scope: federal
+    use: rag
+    access: public
+    citation_required: true
+    notes: Fonte oficial para orientacoes publicas por tema de saude, sinais de alerta, prevencao e acesso a servicos do SUS.
+
   - id: conitec
     name: CONITEC
     category: health_technology_assessment

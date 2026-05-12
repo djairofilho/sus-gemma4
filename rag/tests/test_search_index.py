@@ -1,3 +1,5 @@
+import pytest
+
 from rag.scripts.ingest_documents import DocumentChunk
 from rag.scripts.search_index import index_chunks, search, tokenize
 
@@ -111,6 +113,31 @@ def test_search_finds_referral_discovery_extract() -> None:
         result.chunk_id.startswith("official_bvsms_referral_search_overview")
         for result in results
     )
+
+
+@pytest.mark.parametrize(
+    ("query", "document_id"),
+    [
+        ("crise hipertensiva lesao orgao alvo samu upa", "official_has_upa_flow"),
+        ("hiperglicemia sintomatica diabetes samu emergencia", "official_dm2_upa_flow"),
+        (
+            "dengue dor barriga vomitos sangramento dificuldade respirar",
+            "official_dengue_warning_signs",
+        ),
+        (
+            "pre natal atencao primaria 12 semana consultas gestante",
+            "official_pre_natal_aps_followup",
+        ),
+        ("ansiedade situacoes agudas upa samu caps raps", "official_anxiety_upa_raps_flow"),
+    ],
+)
+def test_search_finds_priority_protocol_extracts(query: str, document_id: str) -> None:
+    from rag.scripts.ingest_documents import ingest_documents
+
+    indexed = index_chunks(ingest_documents())
+    results = search(query, indexed)
+
+    assert any(result.chunk_id.startswith(document_id) for result in results)
 
 
 def test_search_ignores_zero_score_chunks() -> None:

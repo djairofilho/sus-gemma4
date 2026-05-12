@@ -78,3 +78,11 @@
 - Added optional live Ollama eval gate behind `GEMMA_SUS_RUN_LIVE_OLLAMA_EVALS=true`.
 - Improved `scripts/validate.sh` so local Bash selects a Python with required validation modules when available.
 - Validated and merged PR: https://github.com/djairofilho/sus-gemma4/pull/8
+
+## Official RAG Source Downloads
+
+- Added ignored local raw download area for public official source pages.
+- Registered local official page downloads in `data/sources/rag_downloads.yml`.
+- Added curated RENAME medicines and BVS MS referral/search overview extracts with manifest provenance.
+- Added retrieval and ingestion test coverage for the new official extracts.
+- Validated and merged PR: https://github.com/djairofilho/sus-gemma4/pull/12
