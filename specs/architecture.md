@@ -2,7 +2,7 @@
 
 ## Current Phase
 
-Initial web application shell is complete using the accepted FastAPI, React, and Ollama stack. The next phase is Ollama integration behind the backend runtime boundary.
+Initial web application shell is complete. Ollama integration is implemented behind the backend runtime boundary and remains opt-in through environment configuration.
 
 ## Target Stack
 
@@ -61,3 +61,4 @@ RAG provides:
 - Keep fine-tuning artifacts out of application runtime paths.
 - Use ADRs for stack and boundary decisions.
 - Keep default tests deterministic by mocking live Ollama calls.
+- Keep Ollama disabled by default unless `GEMMA_SUS_USE_OLLAMA=true`.

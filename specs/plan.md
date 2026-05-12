@@ -23,10 +23,10 @@
 
 ## Milestone 2: Ollama Integration
 
-- [ ] Create model runtime interface.
-- [ ] Add Ollama client.
-- [ ] Add local model configuration.
-- [ ] Add failure states for missing Ollama/model.
+- [x] Create model runtime interface.
+- [x] Add Ollama client.
+- [x] Add local model configuration.
+- [x] Add failure states for missing Ollama/model.
 
 ## Milestone 3: Structured Outputs
 
@@ -72,4 +72,4 @@
 - Protocol document licensing and provenance must be tracked.
 - Medical safety expectations must remain conservative.
 - Fine-tuning data quality can create unsafe behavior if not evaluated.
-- Current app shell uses mocked triage output until Ollama and RAG are integrated.
+- Ollama is opt-in and falls back to conservative mock output if unavailable or invalid.

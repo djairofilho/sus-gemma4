@@ -1,8 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.config import get_settings
+from app.ollama_client import OllamaClient
 from app.schemas import HealthResponse, TriageRequest, TriageResponse
-from app.services.triage import create_mock_triage_response
+from app.services.triage import create_triage_response
 
 app = FastAPI(
     title="Gemma SUS Assistant API",
@@ -21,13 +23,23 @@ app.add_middleware(
 
 @app.get("/api/health", response_model=HealthResponse)
 def health() -> HealthResponse:
+    settings = get_settings()
     return HealthResponse(
         status="ok",
-        model_runtime="ollama_not_connected",
+        model_runtime="ollama_enabled" if settings.use_ollama else "mock",
         rag_index="not_configured",
     )
 
 
 @app.post("/api/triage", response_model=TriageResponse)
-def triage(request: TriageRequest) -> TriageResponse:
-    return create_mock_triage_response(request.case_text)
+async def triage(request: TriageRequest) -> TriageResponse:
+    settings = get_settings()
+    runtime = None
+    if settings.use_ollama:
+        runtime = OllamaClient(
+            settings.ollama_base_url,
+            settings.ollama_model,
+            settings.ollama_timeout_seconds,
+        )
+
+    return await create_triage_response(request.case_text, runtime)

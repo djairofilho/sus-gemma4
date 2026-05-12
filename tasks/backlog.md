@@ -9,7 +9,7 @@
 ## Product
 
 - [x] Build web app shell.
-- [ ] Add Ollama integration.
+- [x] Add Ollama integration.
 - [ ] Add structured output schema validation.
 - [ ] Add RAG ingestion and retrieval.
 - [ ] Add safety eval cases.

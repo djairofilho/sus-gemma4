@@ -18,4 +18,5 @@ export type TriageResponse = {
   sus_basis: string[];
   limitations: string;
   safety_notice: string;
+  runtime: "mock" | "ollama" | "mock_fallback";
 };

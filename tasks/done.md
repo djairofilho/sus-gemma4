@@ -20,3 +20,13 @@
 - Added structured result rendering, loading state, error state, and safety notice.
 - Extended validation to cover frontend and backend tooling.
 - Opened PR: https://github.com/djairofilho/sus-gemma4/pull/2
+
+## Ollama Integration
+
+- Added opt-in Ollama runtime configuration.
+- Added backend model runtime boundary.
+- Added Ollama `/api/generate` client with mocked tests.
+- Integrated `/api/triage` with live Ollama when `GEMMA_SUS_USE_OLLAMA=true`.
+- Added conservative mock fallback for unavailable, invalid, or non-JSON model output.
+- Added frontend runtime state rendering.
+- Opened PR: https://github.com/djairofilho/sus-gemma4/pull/3

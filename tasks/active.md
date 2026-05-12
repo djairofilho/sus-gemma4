@@ -6,8 +6,8 @@ No active task.
 
 ## Checklist
 
-- [x] Web app shell completed in PR #2.
+- [x] Ollama integration completed in PR #3.
 
 ## Notes
 
-- Next recommended task: add Ollama integration behind the backend runtime boundary.
+- Next recommended task: add stricter structured output repair/retry and schema regression tests.
