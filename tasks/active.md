@@ -2,18 +2,20 @@
 
 ## Current Task
 
-Add first curated official SUS extracts for local RAG.
+Download official public RAG source pages locally and derive curated SUS extracts.
 
 ## Checklist
 
-- [x] Add curated Linhas de Cuidado overview extract.
-- [x] Add curated BVS MS overview extract.
-- [x] Add curated PCDT overview extract.
-- [x] Register extracts in `rag/documents/manifest.yml`.
+- [x] Create ignored local raw download area.
+- [x] Register official RAG page downloads in `data/sources/rag_downloads.yml`.
+- [x] Download official source pages into `data/raw/public/rag/`.
+- [x] Add condition/pathway-specific curated extracts from downloaded pages.
+- [x] Add retrieval evals for priority SUS queries.
 - [ ] Run validation and open PR.
 
 ## Notes
 
-- These are overview extracts from official public pages, not complete protocols.
-- Do not infer protocol-specific conduct from these overview extracts alone.
-- Next RAG content PR should add condition/pathway-specific official documents or extracts.
+- Raw downloads are local and ignored; do not commit downloaded HTML/PDF files.
+- Commit only small curated Markdown/text extracts with manifest provenance.
+- Do not infer protocol-specific conduct from overview pages alone.
+- Downloaded local HTML files are recorded in `data/sources/rag_downloads.yml` but intentionally ignored by Git.

@@ -23,6 +23,7 @@ coverage/
 credentials.json
 
 # Local data
+data/raw/public/
 data/raw/private/
 data/processed/private/
 rag/documents/processed/*.jsonl

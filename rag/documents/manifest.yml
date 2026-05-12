@@ -64,3 +64,25 @@ documents:
     language: pt-BR
     local_path: rag/documents/raw/official_pcdt_overview.md
     notes: Extrato curado da pagina oficial de PCDT; descreve tipos de documentos e nao substitui PCDT especifico.
+
+  - id: official_rename_medicines_overview
+    source_id: ministerio_saude_rename
+    title: Rename e uso racional de medicamentos - Ministerio da Saude
+    source_url: https://www.gov.br/saude/pt-br/composicao/sectics/daf/rename
+    publisher: Ministerio da Saude
+    retrieved_at: "2026-05-12"
+    license: official_public_web_extract
+    language: pt-BR
+    local_path: rag/documents/raw/official_rename_medicines_overview.md
+    notes: Extrato curado da pagina oficial da Rename; nao autoriza prescricao automatizada nem substitui avaliacao profissional.
+
+  - id: official_bvsms_referral_search_overview
+    source_id: ministerio_saude_protocolos_encaminhamento
+    title: BVS MS e busca por integracao APS e atencao especializada
+    source_url: https://bvsms.saude.gov.br/?s=protocolos+de+encaminhamento+aten%C3%A7%C3%A3o+b%C3%A1sica
+    publisher: Ministerio da Saude
+    retrieved_at: "2026-05-12"
+    license: official_public_web_extract
+    language: pt-BR
+    local_path: rag/documents/raw/official_bvsms_referral_search_overview.md
+    notes: Extrato curado de pagina de busca da BVS MS para descoberta de materiais de encaminhamento e integracao assistencial; nao e protocolo completo.
