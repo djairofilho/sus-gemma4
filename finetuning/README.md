@@ -48,3 +48,4 @@ python -m finetuning.scripts.train_qlora_skeleton --dry-run
 - Do not train protocol details that should come from RAG.
 - Include safety/refusal behavior and structured-output validity examples.
 - Keep trained adapters in `finetuning/adapters/`, which is ignored locally until an export policy is defined.
+- Follow `docs/dataset-acquisition.md` before downloading public datasets or deriving new training examples.

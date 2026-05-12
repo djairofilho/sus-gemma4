@@ -42,6 +42,14 @@ Candidate sources:
 - Label restricted or credentialed datasets explicitly.
 - Prefer official federal sources before state or municipal sources for hackathon MVP.
 - Use synthetic supervised examples only when they are traceable to allowed behavior requirements or official source context.
+- Keep large raw downloads and public dataset archives out of Git until a PR explicitly justifies committing them.
+- Commit curated RAG Markdown/text extracts only when manifest metadata preserves official source provenance and retrieval date.
+- Acquire public fine-tuning datasets for review before training; do not train on downloaded data until license, privacy, and schema checks pass.
+
+## Acquisition Guides
+
+- RAG documents: `docs/rag-document-acquisition.md`.
+- Fine-tuning and benchmark datasets: `docs/dataset-acquisition.md`.
 
 ## Schema Language Policy
 

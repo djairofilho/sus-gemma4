@@ -81,3 +81,5 @@
 - RAG currently supports local Markdown/text ingestion, source-backed seed summaries, lexical search with Portuguese normalization/ranking improvements, and cited retrieval; embeddings remain future work.
 - Fine-tuning currently has synthetic JSONL seed, validation, and safety splits plus dataset validation and a non-training QLoRA skeleton; real training remains future work.
 - Demo UX now shows backend/runtime/RAG status, example cases, cited basis, and raw structured JSON for hackathon review.
+- Official document acquisition is manual-first: commit small curated Markdown/text extracts with provenance, keep large downloads local/ignored, and validate manifest metadata before indexing.
+- Public fine-tuning datasets should be downloaded only for local review first; committed examples remain synthetic until license and privacy policy changes are explicitly defined.
