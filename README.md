@@ -25,6 +25,26 @@ Run validation:
 bash scripts/validate.sh
 ```
 
+## Local App Shell
+
+Backend:
+
+```bash
+cd app/backend
+python -m venv .venv
+. .venv/bin/activate
+pip install -e .[dev]
+uvicorn app.main:app --reload --port 8000
+```
+
+Frontend:
+
+```bash
+cd app/frontend
+npm install
+npm run dev
+```
+
 Run an iterative Ralph-style loop:
 
 ```bash

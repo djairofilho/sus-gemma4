@@ -2,19 +2,12 @@
 
 ## Current Task
 
-Record FastAPI/React/Ollama stack decision and add repository quality workflow templates.
+No active task.
 
 ## Checklist
 
-- [x] Read relevant specs and skills.
-- [x] Create working branch.
-- [x] Add ADR for application stack.
-- [x] Add GitHub PR/issue/workflow templates.
-- [x] Update specs and tasks.
-- [x] Run validation.
-- [ ] Commit and push branch.
+- [x] Web app shell completed in PR #2.
 
 ## Notes
 
-- Selected stack: Vite + React + TypeScript frontend, FastAPI + Pydantic backend, Ollama local runtime.
-- Next recommended feature branch after this task: `feat/web-app-shell`.
+- Next recommended task: add Ollama integration behind the backend runtime boundary.

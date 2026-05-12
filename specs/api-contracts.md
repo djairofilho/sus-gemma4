@@ -28,10 +28,23 @@ This file defines stable contracts for internal APIs and structured model output
 - `limitations` must state that the output does not replace professional evaluation.
 - `safety_notice` must include escalation guidance for worsening or severe symptoms.
 
-## Future Endpoints
-
-Draft endpoint names. Implementation requires ADR if backend framework is not already selected.
+## Endpoints
 
 - `POST /api/triage`: submit case text and receive structured guidance.
-- `POST /api/rag/search`: retrieve local protocol snippets.
 - `GET /api/health`: verify app, Ollama, and index status.
+
+## Future Endpoints
+
+- `POST /api/rag/search`: retrieve local protocol snippets.
+
+## Request Drafts
+
+### `POST /api/triage`
+
+```json
+{
+  "case_text": "Paciente relata PA 18x12, cefaleia forte e falta de ar. Esta na UBS."
+}
+```
+
+The initial app shell returns a schema-valid mocked response. Ollama and RAG integration will replace the mock service in later milestones without changing the endpoint path.
