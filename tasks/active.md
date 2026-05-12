@@ -6,8 +6,8 @@ No active task.
 
 ## Checklist
 
-- [x] Local RAG document foundation completed in PR pending.
+- [x] RAG ingestion pipeline completed in PR pending.
 
 ## Notes
 
-- Next recommended task: add RAG ingestion pipeline for local documents.
+- Next recommended task: expose lexical RAG search through backend API.

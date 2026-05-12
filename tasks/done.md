@@ -55,3 +55,12 @@
 - Added local RAG document layout.
 - Added source metadata validator and tests.
 - Integrated RAG validation into `scripts/validate.sh`.
+
+## RAG Ingestion Pipeline
+
+- Added local document manifest.
+- Added synthetic Portuguese RAG fixture for pipeline tests.
+- Added Markdown/text ingestion with section chunking.
+- Added local lexical index and search.
+- Preserved citation metadata in chunks and search results.
+- Integrated ingestion and index build into validation.
