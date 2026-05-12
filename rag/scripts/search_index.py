@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import unicodedata
 from collections import Counter
 from dataclasses import asdict, dataclass
 from pathlib import Path
@@ -12,6 +13,29 @@ from rag.scripts.ingest_documents import DocumentChunk, PROCESSED_PATH, ingest_d
 
 ROOT = Path(__file__).resolve().parents[2]
 INDEX_PATH = ROOT / "rag" / "index" / "lexical_index.jsonl"
+STOPWORDS = {
+    "a",
+    "ao",
+    "aos",
+    "as",
+    "com",
+    "da",
+    "das",
+    "de",
+    "do",
+    "dos",
+    "e",
+    "em",
+    "na",
+    "nas",
+    "no",
+    "nos",
+    "o",
+    "os",
+    "ou",
+    "para",
+    "por",
+}
 
 
 @dataclass(frozen=True)
@@ -40,14 +64,22 @@ class SearchResult:
     publisher: str
 
 
-def tokenize(text: str) -> list[str]:
-    return re.findall(r"[a-zA-ZÀ-ÿ0-9]+", text.lower())
+def normalize_for_search(text: str) -> str:
+    without_accents = unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode("ascii")
+    return without_accents.lower()
+
+
+def tokenize(text: str, *, remove_stopwords: bool = False) -> list[str]:
+    tokens = re.findall(r"[a-zA-Z0-9]+", normalize_for_search(text))
+    if remove_stopwords:
+        return [token for token in tokens if token not in STOPWORDS]
+    return tokens
 
 
 def index_chunks(chunks: list[DocumentChunk]) -> list[IndexedChunk]:
     indexed: list[IndexedChunk] = []
     for chunk in chunks:
-        terms = dict(Counter(tokenize(f"{chunk.title} {chunk.section} {chunk.text}")))
+        terms = weighted_terms(chunk)
         indexed.append(
             IndexedChunk(
                 id=chunk.id,
@@ -66,6 +98,14 @@ def index_chunks(chunks: list[DocumentChunk]) -> list[IndexedChunk]:
     return indexed
 
 
+def weighted_terms(chunk: DocumentChunk) -> dict[str, int]:
+    terms: Counter[str] = Counter()
+    terms.update({term: count * 3 for term, count in Counter(tokenize(chunk.title)).items()})
+    terms.update({term: count * 2 for term, count in Counter(tokenize(chunk.section)).items()})
+    terms.update(Counter(tokenize(chunk.text)))
+    return dict(terms)
+
+
 def write_index(indexed_chunks: list[IndexedChunk], output_path: Path) -> None:
     output_path.parent.mkdir(parents=True, exist_ok=True)
     lines = [json.dumps(asdict(chunk), ensure_ascii=False, sort_keys=True) for chunk in indexed_chunks]
@@ -82,10 +122,15 @@ def load_index(path: Path) -> list[IndexedChunk]:
 
 
 def search(query: str, indexed_chunks: list[IndexedChunk], limit: int = 3) -> list[SearchResult]:
-    query_terms = tokenize(query)
+    query_terms = tokenize(query, remove_stopwords=True)
+    if not query_terms:
+        return []
+
+    normalized_query = " ".join(query_terms)
     scored: list[SearchResult] = []
     for chunk in indexed_chunks:
         score = sum(chunk.terms.get(term, 0) for term in query_terms)
+        score += phrase_bonus(normalized_query, chunk)
         if score <= 0:
             continue
         scored.append(
@@ -101,6 +146,19 @@ def search(query: str, indexed_chunks: list[IndexedChunk], limit: int = 3) -> li
         )
 
     return sorted(scored, key=lambda result: (-result.score, result.chunk_id))[:limit]
+
+
+def phrase_bonus(normalized_query: str, chunk: IndexedChunk) -> int:
+    if " " not in normalized_query:
+        return 0
+
+    searchable_text = " ".join(
+        tokenize(f"{chunk.title} {chunk.section} {chunk.text}", remove_stopwords=True)
+    )
+    if normalized_query not in searchable_text:
+        return 0
+
+    return len(normalized_query.split()) * 3
 
 
 def build_index(output_path: Path = INDEX_PATH) -> list[IndexedChunk]:

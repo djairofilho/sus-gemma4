@@ -9,3 +9,25 @@ documents:
     language: pt-BR
     local_path: rag/documents/raw/synthetic_ubs_upa_samu_flow.md
     notes: Documento sintetico nao oficial para testar pipeline local sem baixar fontes externas.
+
+  - id: seed_linhas_cuidado_sus
+    source_id: ministerio_saude_linhas_cuidado
+    title: Linhas de Cuidado no SUS - semente local
+    source_url: https://linhasdecuidado.saude.gov.br
+    publisher: Ministerio da Saude
+    retrieved_at: "2026-05-12"
+    license: public_source_seed_summary
+    language: pt-BR
+    local_path: rag/documents/raw/seed_linhas_cuidado_sus.md
+    notes: Semente local baseada no registro de fonte oficial; nao substitui documento oficial completo.
+
+  - id: seed_protocolos_atencao_basica
+    source_id: ministerio_saude_protocolos_atencao_basica
+    title: Protocolos da Atencao Basica - semente local
+    source_url: https://bvsms.saude.gov.br
+    publisher: Ministerio da Saude
+    retrieved_at: "2026-05-12"
+    license: public_source_seed_summary
+    language: pt-BR
+    local_path: rag/documents/raw/seed_protocolos_atencao_basica.md
+    notes: Semente local baseada no registro de fonte oficial; nao substitui documento oficial completo.
