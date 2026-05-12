@@ -150,7 +150,13 @@ run_rag_validation_if_exists() {
   "$python_bin" -m pytest rag/tests
 
   log "run rag source validation"
-  "$python_bin" rag/scripts/validate_sources.py
+  "$python_bin" -m rag.scripts.validate_sources
+
+  log "run rag ingestion"
+  "$python_bin" -m rag.scripts.ingest_documents
+
+  log "run rag lexical index build"
+  "$python_bin" -m rag.scripts.search_index --build
 }
 
 run_if_executable_exists() {

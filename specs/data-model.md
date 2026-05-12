@@ -36,8 +36,14 @@ The initial product should avoid persistent patient data storage. Store only dev
 
 - `id`: stable chunk identifier.
 - `document_id`: parent document.
+- `source_id`: source registry identifier.
+- `title`: document title.
 - `section`: heading or section path.
 - `text`: chunk text.
+- `source_url`: citation URL.
+- `publisher`: source publisher.
+- `retrieved_at`: retrieval or registry date.
+- `language`: content language.
 - `embedding_id`: optional vector reference.
 - `metadata`: source metadata.
 

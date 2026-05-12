@@ -38,10 +38,10 @@
 ## Milestone 4: RAG
 
 - [x] Define document metadata model.
-- [ ] Add ingestion pipeline.
-- [ ] Add chunking strategy.
-- [ ] Add local embeddings/vector search.
-- [ ] Add citation rendering.
+- [x] Add ingestion pipeline.
+- [x] Add chunking strategy.
+- [~] Add local embeddings/vector search.
+- [~] Add citation rendering.
 
 ## Milestone 5: Fine-Tuning Track
 
@@ -76,3 +76,4 @@
 - Structured output parser accepts plain JSON, fenced JSON, and JSON embedded in extra text.
 - SUS safety evals currently run against deterministic mock triage output; live-model evals remain future work.
 - RAG source registries are defined and validated before document ingestion.
+- RAG currently supports local Markdown/text ingestion and lexical search; embeddings remain future work.
