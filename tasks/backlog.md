@@ -8,7 +8,7 @@
 
 ## Product
 
-- [~] Build web app shell.
+- [x] Build web app shell.
 - [ ] Add Ollama integration.
 - [ ] Add structured output schema validation.
 - [ ] Add RAG ingestion and retrieval.

@@ -2,7 +2,7 @@
 
 ## Current Phase
 
-Initial web application shell is in progress using the accepted FastAPI, React, and Ollama stack.
+Initial web application shell is complete using the accepted FastAPI, React, and Ollama stack. The next phase is Ollama integration behind the backend runtime boundary.
 
 ## Target Stack
 

@@ -17,9 +17,9 @@
 ## Milestone 1: Web App Shell
 
 - [x] Select application stack via ADR.
-- [~] Create local web app shell.
-- [~] Add structured result components.
-- [~] Add responsive demo layout.
+- [x] Create local web app shell.
+- [x] Add structured result components.
+- [x] Add responsive demo layout.
 
 ## Milestone 2: Ollama Integration
 
@@ -72,3 +72,4 @@
 - Protocol document licensing and provenance must be tracked.
 - Medical safety expectations must remain conservative.
 - Fine-tuning data quality can create unsafe behavior if not evaluated.
+- Current app shell uses mocked triage output until Ollama and RAG are integrated.
