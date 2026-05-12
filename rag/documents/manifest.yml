@@ -1,0 +1,11 @@
+documents:
+  - id: synthetic_ubs_upa_samu_flow
+    source_id: ministerio_saude_linhas_cuidado
+    title: Exemplo sintetico de fluxo UBS UPA SAMU
+    source_url: https://linhasdecuidado.saude.gov.br
+    publisher: Ministerio da Saude
+    retrieved_at: "2026-05-12"
+    license: synthetic_fixture_for_tests
+    language: pt-BR
+    local_path: rag/documents/raw/synthetic_ubs_upa_samu_flow.md
+    notes: Documento sintetico nao oficial para testar pipeline local sem baixar fontes externas.
