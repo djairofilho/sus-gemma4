@@ -2,18 +2,12 @@
 
 ## Current Task
 
-Add local RAG ingestion, section chunking, and lexical search foundation.
+No active task.
 
 ## Checklist
 
-- [x] Read relevant specs and RAG skill.
-- [x] Create working branch `feat/rag-ingestion-pipeline`.
-- [x] Add local document manifest and synthetic public fixture.
-- [x] Add text ingestion and section chunking.
-- [x] Add local lexical index and search.
-- [x] Integrate validation and update specs/tasks.
-- [ ] Open PR and wait for CI.
+- [x] RAG ingestion pipeline completed in PR pending.
 
 ## Notes
 
-- No downloads or scraping in this task; ingestion reads only local files already present under `rag/documents/raw`.
+- Next recommended task: expose lexical RAG search through backend API.
