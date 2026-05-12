@@ -16,7 +16,7 @@
 
 ## Milestone 1: Web App Shell
 
-- [ ] Select frontend stack via ADR if deviating from Vite + React + TypeScript.
+- [x] Select application stack via ADR.
 - [ ] Create local web app shell.
 - [ ] Add structured result components.
 - [ ] Add responsive demo layout.
@@ -53,10 +53,18 @@
 
 ## Milestone 6: Review And Release Discipline
 
-- [ ] Establish branch naming.
-- [ ] Establish PR template.
-- [ ] Add CI once app tooling exists.
-- [ ] Require validation and review before merge.
+- [~] Establish branch naming.
+- [~] Establish PR template.
+- [~] Add CI once app tooling exists.
+- [~] Require validation and review before merge.
+
+## Branch And PR Policy
+
+- `main` is the stable integration branch.
+- Use short-lived branches with Conventional Commit-aligned prefixes: `feat/`, `fix/`, `docs/`, `chore/`, `refactor/`, `test/`, `build/`, `ci/`, `style/`.
+- Open PRs for non-trivial changes.
+- Each PR must state specs read, validation run, safety/privacy impact, and architecture/API/schema impact.
+- Merge only after validation passes and review risks are resolved.
 
 ## Current Risks
 
