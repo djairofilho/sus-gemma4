@@ -37,6 +37,15 @@ pip install -e .[dev]
 uvicorn app.main:app --reload --port 8000
 ```
 
+Enable live Ollama calls instead of the mock runtime:
+
+```bash
+GEMMA_SUS_USE_OLLAMA=true \
+GEMMA_SUS_OLLAMA_BASE_URL=http://localhost:11434 \
+GEMMA_SUS_OLLAMA_MODEL=gemma3:4b \
+uvicorn app.main:app --reload --port 8000
+```
+
 Frontend:
 
 ```bash

@@ -15,7 +15,8 @@ This file defines stable contracts for internal APIs and structured model output
   "red_flags": ["string"],
   "sus_basis": ["string"],
   "limitations": "string",
-  "safety_notice": "string"
+  "safety_notice": "string",
+  "runtime": "mock | ollama | mock_fallback"
 }
 ```
 
@@ -27,6 +28,7 @@ This file defines stable contracts for internal APIs and structured model output
 - `sus_basis` must cite retrieved context when RAG is used.
 - `limitations` must state that the output does not replace professional evaluation.
 - `safety_notice` must include escalation guidance for worsening or severe symptoms.
+- `runtime` indicates whether the response came from the mock runtime, live Ollama, or safe fallback.
 
 ## Endpoints
 
@@ -47,4 +49,4 @@ This file defines stable contracts for internal APIs and structured model output
 }
 ```
 
-The initial app shell returns a schema-valid mocked response. Ollama and RAG integration will replace the mock service in later milestones without changing the endpoint path.
+The endpoint returns a schema-valid response from live Ollama only when `GEMMA_SUS_USE_OLLAMA=true`. Otherwise it uses the local mock runtime. Invalid or unavailable Ollama responses fall back to a conservative mock response with `runtime` set to `mock_fallback`.

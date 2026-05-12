@@ -8,10 +8,10 @@ Add Ollama integration behind the backend runtime boundary with small, reviewabl
 
 - [x] Read relevant specs and backend skill.
 - [x] Create working branch `feat/ollama-integration`.
-- [ ] Add model runtime configuration and interface.
-- [ ] Add Ollama client with mocked tests.
-- [ ] Integrate triage with safe fallback behavior.
-- [ ] Update frontend/docs/specs.
+- [x] Add model runtime configuration and interface.
+- [x] Add Ollama client with mocked tests.
+- [x] Integrate triage with safe fallback behavior.
+- [x] Update frontend/docs/specs.
 - [ ] Run validation.
 - [ ] Open PR and wait for CI.
 
