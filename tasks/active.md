@@ -12,7 +12,7 @@ Add Ollama integration behind the backend runtime boundary with small, reviewabl
 - [x] Add Ollama client with mocked tests.
 - [x] Integrate triage with safe fallback behavior.
 - [x] Update frontend/docs/specs.
-- [ ] Run validation.
+- [x] Run validation.
 - [ ] Open PR and wait for CI.
 
 ## Notes
