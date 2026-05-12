@@ -2,20 +2,20 @@
 
 ## Current Task
 
-Download official public RAG source pages locally and derive curated SUS extracts.
+Add complete condition/pathway official SUS protocol extracts.
 
 ## Checklist
 
-- [x] Create ignored local raw download area.
-- [x] Register official RAG page downloads in `data/sources/rag_downloads.yml`.
-- [x] Download official source pages into `data/raw/public/rag/`.
-- [x] Add condition/pathway-specific curated extracts from downloaded pages.
-- [x] Add retrieval evals for priority SUS queries.
-- [ ] Run validation and open PR.
+- [x] Select priority official protocols from registered public SUS sources.
+- [x] Download source documents into ignored local raw storage.
+- [x] Curate small Markdown/text extracts with provenance.
+- [x] Add manifest entries and source validation coverage.
+- [x] Add retrieval evals for protocol-specific queries.
+- [x] Run validation and open PR.
 
 ## Notes
 
 - Raw downloads are local and ignored; do not commit downloaded HTML/PDF files.
 - Commit only small curated Markdown/text extracts with manifest provenance.
-- Do not infer protocol-specific conduct from overview pages alone.
-- Downloaded local HTML files are recorded in `data/sources/rag_downloads.yml` but intentionally ignored by Git.
+- Prefer complete official protocol or pathway pages over overview pages for protocol-specific guidance.
+- Do not infer protocol-specific conduct beyond the cited official text.

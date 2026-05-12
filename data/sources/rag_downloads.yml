@@ -53,3 +53,58 @@ downloads:
     license_or_usage_note: Pagina publica oficial ou resultado de busca para curadoria manual; manter bruto local/ignorado.
     review_status: downloaded_for_curation
     notes: Ponto inicial para localizar protocolos de encaminhamento e regulacao entre atencao basica e especializada.
+
+  - id: linhas_has_upa_html
+    source_id: ministerio_saude_linhas_cuidado
+    title: Linha de Cuidado HAS no adulto - Unidade de Pronto Atendimento
+    source_url: https://linhasdecuidado.saude.gov.br/portal/hipertensao-arterial-sistemica-(HAS)-no-adulto/unidade-de-pronto-atendimento
+    downloaded_at: "2026-05-12"
+    local_download_path: data/raw/public/rag/linhas_has_upa.html
+    file_type: html
+    license_or_usage_note: Pagina publica oficial; manter HTML bruto local/ignorado e commitar apenas extratos curados.
+    review_status: curated_extract_committed
+    notes: Fonte para fluxo de crise hipertensiva na UPA, SAMU e encaminhamento hospitalar quando ha lesao de orgao-alvo.
+
+  - id: linhas_dm2_upa_html
+    source_id: ministerio_saude_linhas_cuidado
+    title: Linha de Cuidado DM2 no adulto - Unidade de Pronto Atendimento
+    source_url: https://linhasdecuidado.saude.gov.br/portal/diabetes-mellitus-tipo-2-(DM2)-no-adulto/unidade-de-pronto-atendimento
+    downloaded_at: "2026-05-12"
+    local_download_path: data/raw/public/rag/linhas_dm2_upa.html
+    file_type: html
+    license_or_usage_note: Pagina publica oficial; manter HTML bruto local/ignorado e commitar apenas extratos curados.
+    review_status: curated_extract_committed
+    notes: Fonte para fluxo de DM2 aguda, hiperglicemia sintomatica, SAMU e emergencia hospitalar.
+
+  - id: govbr_dengue_html
+    source_id: ministerio_saude_saude_a_z
+    title: Dengue - Ministerio da Saude
+    source_url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/d/dengue
+    downloaded_at: "2026-05-12"
+    local_download_path: data/raw/public/rag/govbr_dengue.html
+    file_type: html
+    license_or_usage_note: Pagina publica oficial sob termos do portal gov.br; manter HTML bruto local/ignorado e commitar apenas extratos curados.
+    review_status: curated_extract_committed
+    notes: Fonte para sinais de alarme, sinais de dengue grave, procura de servico de saude e orientacoes publicas.
+
+  - id: govbr_pre_natal_html
+    source_id: ministerio_saude_saude_a_z
+    title: Pre-natal - Ministerio da Saude
+    source_url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/g/gravidez/pre-natal
+    downloaded_at: "2026-05-12"
+    local_download_path: data/raw/public/rag/govbr_pre_natal.html
+    file_type: html
+    license_or_usage_note: Pagina publica oficial sob termos do portal gov.br; manter HTML bruto local/ignorado e commitar apenas extratos curados.
+    review_status: curated_extract_committed
+    notes: Fonte para inicio precoce do pre-natal, acompanhamento pela APS e periodicidade de consultas.
+
+  - id: linhas_ansiedade_upa_html
+    source_id: ministerio_saude_linhas_cuidado
+    title: Linha de Cuidado Transtornos de Ansiedade no adulto - Unidade de Pronto Atendimento
+    source_url: https://linhasdecuidado.saude.gov.br/portal/ansiedade/unidade-de-pronto-atendimento
+    downloaded_at: "2026-05-12"
+    local_download_path: data/raw/public/rag/linhas_ansiedade_upa.html
+    file_type: html
+    license_or_usage_note: Pagina publica oficial; manter HTML bruto local/ignorado e commitar apenas extratos curados.
+    review_status: curated_extract_committed
+    notes: Fonte para situacoes agudas em saude mental, UPA, SAMU e articulacao com APS e atencao psicossocial especializada.

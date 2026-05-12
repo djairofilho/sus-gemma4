@@ -86,3 +86,58 @@ documents:
     language: pt-BR
     local_path: rag/documents/raw/official_bvsms_referral_search_overview.md
     notes: Extrato curado de pagina de busca da BVS MS para descoberta de materiais de encaminhamento e integracao assistencial; nao e protocolo completo.
+
+  - id: official_has_upa_flow
+    source_id: ministerio_saude_linhas_cuidado
+    title: Linha de Cuidado HAS - crise hipertensiva na UPA
+    source_url: https://linhasdecuidado.saude.gov.br/portal/hipertensao-arterial-sistemica-(HAS)-no-adulto/unidade-de-pronto-atendimento
+    publisher: Ministerio da Saude
+    retrieved_at: "2026-05-12"
+    license: official_public_web_extract
+    language: pt-BR
+    local_path: rag/documents/raw/official_has_upa_flow.md
+    notes: Extrato curado de fluxo oficial de HAS na UPA; nao substitui a linha de cuidado completa nem avaliacao profissional.
+
+  - id: official_dm2_upa_flow
+    source_id: ministerio_saude_linhas_cuidado
+    title: Linha de Cuidado DM2 - hiperglicemia na UPA
+    source_url: https://linhasdecuidado.saude.gov.br/portal/diabetes-mellitus-tipo-2-(DM2)-no-adulto/unidade-de-pronto-atendimento
+    publisher: Ministerio da Saude
+    retrieved_at: "2026-05-12"
+    license: official_public_web_extract
+    language: pt-BR
+    local_path: rag/documents/raw/official_dm2_upa_flow.md
+    notes: Extrato curado de fluxo oficial de DM2 na UPA; nao substitui a linha de cuidado completa nem avaliacao profissional.
+
+  - id: official_dengue_warning_signs
+    source_id: ministerio_saude_saude_a_z
+    title: Dengue - sinais de alarme e procura de servico
+    source_url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/d/dengue
+    publisher: Ministerio da Saude
+    retrieved_at: "2026-05-12"
+    license: official_public_web_extract
+    language: pt-BR
+    local_path: rag/documents/raw/official_dengue_warning_signs.md
+    notes: Extrato curado da pagina oficial de dengue; nao substitui protocolo clinico completo nem avaliacao profissional.
+
+  - id: official_pre_natal_aps_followup
+    source_id: ministerio_saude_saude_a_z
+    title: Pre-natal - inicio e acompanhamento na APS
+    source_url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/g/gravidez/pre-natal
+    publisher: Ministerio da Saude
+    retrieved_at: "2026-05-12"
+    license: official_public_web_extract
+    language: pt-BR
+    local_path: rag/documents/raw/official_pre_natal_aps_followup.md
+    notes: Extrato curado da pagina oficial de pre-natal; nao substitui caderno completo, protocolo local ou avaliacao profissional.
+
+  - id: official_anxiety_upa_raps_flow
+    source_id: ministerio_saude_linhas_cuidado
+    title: Linha de Cuidado Ansiedade - situacoes agudas na UPA e RAPS
+    source_url: https://linhasdecuidado.saude.gov.br/portal/ansiedade/unidade-de-pronto-atendimento
+    publisher: Ministerio da Saude
+    retrieved_at: "2026-05-12"
+    license: official_public_web_extract
+    language: pt-BR
+    local_path: rag/documents/raw/official_anxiety_upa_raps_flow.md
+    notes: Extrato curado de fluxo oficial de ansiedade na UPA; nao substitui a linha de cuidado completa, avaliacao de risco ou cuidado em crise.
