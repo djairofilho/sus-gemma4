@@ -8,9 +8,9 @@ Add structured output parsing and one correction retry before falling back from 
 
 - [x] Read relevant specs and testing skill.
 - [x] Create working branch `feat/structured-output-retry`.
-- [ ] Add structured output parser and tests.
-- [ ] Add correction retry in triage flow.
-- [ ] Update specs and task memory.
+- [x] Add structured output parser and tests.
+- [x] Add correction retry in triage flow.
+- [x] Update specs and task memory.
 - [ ] Run validation.
 - [ ] Open PR and wait for CI.
 
