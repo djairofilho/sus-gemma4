@@ -37,4 +37,6 @@ jobs:
         working-directory: app/backend
 
       - name: Validate
+        env:
+          PYTHONPATH: ${{ github.workspace }}
         run: bash scripts/validate.sh

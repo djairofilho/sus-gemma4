@@ -5,7 +5,6 @@ import asyncio
 import json
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
 
 from app.schemas import TriageResponse
 from app.services.triage import create_triage_response
