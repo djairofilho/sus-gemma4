@@ -30,7 +30,7 @@
 
 ## Milestone 3: Structured Outputs
 
-- [~] Define shared JSON schema.
+- [x] Define shared JSON schema.
 - [x] Validate model output.
 - [x] Add repair or retry strategy.
 - [x] Add schema regression tests.
@@ -48,7 +48,7 @@
 - [ ] Define dataset format.
 - [ ] Add seed examples.
 - [ ] Add Unsloth/QLoRA scripts.
-- [ ] Add eval split and safety cases.
+- [x] Add eval split and safety cases.
 - [ ] Document adapter export path.
 
 ## Milestone 6: Review And Release Discipline
@@ -74,3 +74,4 @@
 - Fine-tuning data quality can create unsafe behavior if not evaluated.
 - Ollama is opt-in and falls back to conservative mock output if unavailable or invalid.
 - Structured output parser accepts plain JSON, fenced JSON, and JSON embedded in extra text.
+- SUS safety evals currently run against deterministic mock triage output; live-model evals remain future work.
