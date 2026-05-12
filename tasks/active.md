@@ -2,22 +2,12 @@
 
 ## Current Task
 
-Foundation repository setup for agent-first, spec-driven development.
+No active task.
 
 ## Checklist
 
-- [x] Create global agent contract.
-- [x] Create persistent specs.
-- [x] Create OpenCode config.
-- [x] Create reusable skills.
-- [x] Create reusable prompts.
-- [x] Create task memory files.
-- [x] Create validation scripts.
-- [x] Run validation.
-- [ ] Commit and publish to `main`.
+- [x] Foundation repository setup completed.
 
 ## Notes
 
-- Product name: Gemma SUS Assistant.
-- Initial runtime direction: web app with Ollama.
-- Fine-tuning is planned from the beginning but remains separate from RAG/runtime implementation.
+- Next recommended task: create the web app shell after selecting the frontend/backend structure.
