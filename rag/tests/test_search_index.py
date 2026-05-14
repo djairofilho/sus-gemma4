@@ -1,7 +1,7 @@
 import pytest
 
 from rag.scripts.ingest_documents import DocumentChunk
-from rag.scripts.search_index import index_chunks, search, tokenize
+from rag.scripts.search_index import cosine_similarity, index_chunks, normalize_vector, search, tokenize
 
 
 def chunk(chunk_id: str, section: str, text: str) -> DocumentChunk:
@@ -47,6 +47,13 @@ def test_search_returns_ranked_chunks_with_citations() -> None:
     assert results[0].chunk_id == "chunk_2"
     assert results[0].source_url == "https://example.test/doc"
     assert results[0].publisher == "Ministerio da Saude"
+
+
+def test_index_chunks_adds_local_vector_embeddings() -> None:
+    indexed = index_chunks([chunk("chunk_1", "Sinais", "Falta de ar indica UPA.")])
+
+    assert indexed[0].vector
+    assert cosine_similarity(normalize_vector({"falta": 1, "ar": 1}), indexed[0].vector) > 0
 
 
 def test_search_matches_accent_variants() -> None:

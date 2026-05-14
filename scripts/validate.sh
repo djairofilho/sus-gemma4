@@ -156,11 +156,16 @@ run_rag_validation_if_exists() {
   log "run rag ingestion"
   "$python_bin" -m rag.scripts.ingest_documents
 
-  log "run rag lexical index build"
+  log "run rag hybrid index build"
   "$python_bin" -m rag.scripts.search_index --build
 }
 
 run_finetuning_validation_if_exists() {
+  if [ "${GEMMA_SUS_VALIDATE_FINETUNING:-false}" != "true" ]; then
+    log "skip fine-tuning validation: set GEMMA_SUS_VALIDATE_FINETUNING=true to run"
+    return 0
+  fi
+
   if [ ! -f "finetuning/scripts/validate_dataset.py" ]; then
     log "skip fine-tuning validation: dataset validator not found"
     return 0

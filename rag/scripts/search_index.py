@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import re
 import unicodedata
 from collections import Counter
@@ -55,6 +56,7 @@ class IndexedChunk:
     retrieved_at: str
     language: str
     terms: dict[str, int]
+    vector: dict[str, float]
 
 
 @dataclass(frozen=True)
@@ -97,6 +99,7 @@ def index_chunks(chunks: list[DocumentChunk]) -> list[IndexedChunk]:
                 retrieved_at=chunk.retrieved_at,
                 language=chunk.language,
                 terms=terms,
+                vector=normalize_vector(terms),
             )
         )
     return indexed
@@ -108,6 +111,13 @@ def weighted_terms(chunk: DocumentChunk) -> dict[str, int]:
     terms.update({term: count * 2 for term, count in Counter(tokenize(chunk.section)).items()})
     terms.update(Counter(tokenize(chunk.text)))
     return dict(terms)
+
+
+def normalize_vector(terms: dict[str, int]) -> dict[str, float]:
+    magnitude = math.sqrt(sum(weight * weight for weight in terms.values()))
+    if magnitude == 0:
+        return {}
+    return {term: weight / magnitude for term, weight in terms.items()}
 
 
 def write_index(indexed_chunks: list[IndexedChunk], output_path: Path) -> None:
@@ -124,7 +134,10 @@ def load_index(path: Path) -> list[IndexedChunk]:
     for line in path.read_text(encoding="utf-8").splitlines():
         if not line.strip():
             continue
-        chunks.append(IndexedChunk(**json.loads(line)))
+        payload = json.loads(line)
+        if "vector" not in payload:
+            payload["vector"] = normalize_vector(payload["terms"])
+        chunks.append(IndexedChunk(**payload))
     return chunks
 
 
@@ -134,10 +147,10 @@ def search(query: str, indexed_chunks: list[IndexedChunk], limit: int = 3) -> li
         return []
 
     normalized_query = " ".join(query_terms)
+    query_vector = normalize_vector(dict(Counter(query_terms)))
     scored: list[SearchResult] = []
     for chunk in indexed_chunks:
-        score = sum(chunk.terms.get(term, 0) for term in query_terms)
-        score += phrase_bonus(normalized_query, chunk)
+        score = hybrid_score(query_terms, query_vector, normalized_query, chunk)
         if score <= 0:
             continue
         scored.append(
@@ -153,6 +166,23 @@ def search(query: str, indexed_chunks: list[IndexedChunk], limit: int = 3) -> li
         )
 
     return sorted(scored, key=lambda result: (-result.score, result.chunk_id))[:limit]
+
+
+def hybrid_score(
+    query_terms: list[str],
+    query_vector: dict[str, float],
+    normalized_query: str,
+    chunk: IndexedChunk,
+) -> int:
+    lexical_score = sum(chunk.terms.get(term, 0) for term in query_terms)
+    vector_score = cosine_similarity(query_vector, chunk.vector)
+    return lexical_score + int(round(vector_score * 10)) + phrase_bonus(normalized_query, chunk)
+
+
+def cosine_similarity(left: dict[str, float], right: dict[str, float]) -> float:
+    if not left or not right:
+        return 0.0
+    return sum(weight * right.get(term, 0.0) for term, weight in left.items())
 
 
 def phrase_bonus(normalized_query: str, chunk: IndexedChunk) -> int:
@@ -177,7 +207,7 @@ def build_index(output_path: Path = INDEX_PATH) -> list[IndexedChunk]:
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Build or search the local lexical RAG index.")
+    parser = argparse.ArgumentParser(description="Build or search the local hybrid RAG index.")
     parser.add_argument("--build", action="store_true")
     parser.add_argument("--query", type=str)
     parser.add_argument("--index", type=Path, default=INDEX_PATH)

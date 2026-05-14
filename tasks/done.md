@@ -86,3 +86,10 @@
 - Added curated RENAME medicines and BVS MS referral/search overview extracts with manifest provenance.
 - Added retrieval and ingestion test coverage for the new official extracts.
 - Validated and merged PR: https://github.com/djairofilho/sus-gemma4/pull/12
+
+## Local RAG Retrieval Finalization
+
+- Added sparse local vector embeddings to the generated RAG index.
+- Kept deterministic lexical scoring and phrase boosts as fallback signals inside hybrid retrieval.
+- Documented hybrid lexical/vector retrieval in RAG specs and README.
+- Deferred routine fine-tuning validation behind `GEMMA_SUS_VALIDATE_FINETUNING=true` while RAG release work is prioritized.
