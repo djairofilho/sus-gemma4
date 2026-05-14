@@ -34,6 +34,7 @@ Once application tooling exists, validation should cover both stacks:
 - Integration: mocked Ollama tests by default, live Ollama checks only when explicitly requested.
 - Safety evals: deterministic SUS safety cases using local mock runtime by default.
 - Optional live Ollama evals: gated by `GEMMA_SUS_RUN_LIVE_OLLAMA_EVALS=true` and skipped by default.
+- Fine-tuning validation: gated by `GEMMA_SUS_VALIDATE_FINETUNING=true` while RAG release work is prioritized.
 
 When package scripts do not exist yet, validation should report them as skipped instead of failing the empty repository foundation.
 
