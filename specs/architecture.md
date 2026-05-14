@@ -53,7 +53,7 @@ RAG provides:
 - Source citations.
 - Local document grounding.
 
-The RAG foundation starts with source registries and local document layout before embeddings. Source registries separate official RAG sources from fine-tuning and benchmark datasets. The first retrieval path uses local Markdown/text ingestion, section chunking, and lexical search with citation metadata.
+The RAG foundation uses source registries and local document layout before retrieval. Source registries separate official RAG sources from fine-tuning and benchmark datasets. The current retrieval path uses local Markdown/text ingestion, section chunking, sparse local vector embeddings, lexical scoring, and citation metadata. Lexical scoring remains as a deterministic fallback inside the hybrid ranker.
 
 ## Architecture Rules
 

@@ -41,7 +41,7 @@
 - [x] Define document metadata model.
 - [x] Add ingestion pipeline.
 - [x] Add chunking strategy.
-- [~] Add local embeddings/vector search.
+- [x] Add local embeddings/vector search.
 - [x] Add citation rendering.
 
 ## Milestone 5: Fine-Tuning Track
@@ -78,8 +78,8 @@
 - SUS safety evals currently run against deterministic mock triage output; live-model evals remain future work.
 - Optional live Ollama evals are implemented behind `GEMMA_SUS_RUN_LIVE_OLLAMA_EVALS=true`; deterministic mock evals remain the default.
 - RAG source registries are defined and validated before document ingestion.
-- RAG currently supports local Markdown/text ingestion, source-backed seed summaries, lexical search with Portuguese normalization/ranking improvements, and cited retrieval; embeddings remain future work.
-- Fine-tuning currently has synthetic JSONL seed, validation, and safety splits plus dataset validation and a non-training QLoRA skeleton; real training remains future work.
+- RAG currently supports local Markdown/text ingestion, source-backed seed summaries, hybrid lexical/vector search with Portuguese normalization/ranking improvements, sparse local embeddings, and cited retrieval.
+- Fine-tuning currently has synthetic JSONL seed, validation, and safety splits plus dataset validation and a non-training QLoRA skeleton; real training and routine validation are deferred until RAG release work is complete.
 - Demo UX now shows backend/runtime/RAG status, example cases, cited basis, and raw structured JSON for hackathon review.
 - Official document acquisition is manual-first: commit small curated Markdown/text extracts with provenance, keep large downloads local/ignored, and validate manifest metadata before indexing.
 - Public fine-tuning datasets should be downloaded only for local review first; committed examples remain synthetic until license and privacy policy changes are explicitly defined.

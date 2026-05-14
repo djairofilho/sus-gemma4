@@ -4,7 +4,7 @@ Local retrieval foundation for official SUS-oriented sources.
 
 ## Current Scope
 
-This module currently supports local source metadata validation, local Markdown/text ingestion, section-based chunking, and a lexical search index with accent normalization, stopword filtering, title/section weighting, and phrase-match boosts. It does not download or scrape documents.
+This module currently supports local source metadata validation, local Markdown/text ingestion, section-based chunking, and a hybrid local search index with accent normalization, stopword filtering, title/section weighting, sparse vector embeddings, cosine scoring, and phrase-match boosts. It does not download or scrape documents.
 
 ## Pipeline
 
@@ -13,7 +13,7 @@ source registry
   -> raw official documents
   -> processed text
   -> semantic chunks
-  -> local index
+  -> local hybrid lexical/vector index
   -> cited retrieval
   -> prompt context
 ```
@@ -42,7 +42,7 @@ Ingest local documents into processed chunks:
 python -m rag.scripts.ingest_documents
 ```
 
-Build the lexical index:
+Build the hybrid index:
 
 ```bash
 python -m rag.scripts.search_index --build
